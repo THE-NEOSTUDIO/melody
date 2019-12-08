@@ -1,0 +1,50 @@
+.neo-header {
+  height: 0.63rem;
+  width: 3.75rem;
+}
+
+.neo-header-energetic {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ::before, ::after {
+    content: '';
+    display: block;
+    width: .68rem;
+    height: .53rem;
+    position: absolute;
+    top: .03rem
+  }
+
+  ::before {
+    left: 0.03rem;
+    background: url("../../common/assets/energetic/header/title-left.png") no-repeat center;
+    background-size: contain;
+  }
+
+  ::after {
+    right: 0.03rem;
+    background: url("../../common/assets/energetic/header/title-right.png") no-repeat center;
+    background-size: contain;
+  }
+
+  & .neo-header-main-element-energetic {
+    & .title {
+      margin: 0 auto;
+      width: 2.34rem;
+      height: .42rem;
+      background: url("../../common/assets/energetic/header/title.png") no-repeat center;
+      background-size: contain;
+    }
+
+    & .subtitle {
+      margin: 0 auto;
+      width: 2.28rem;
+      height: .15rem;
+      background: url("../../common/assets/energetic/header/subtitle.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+}

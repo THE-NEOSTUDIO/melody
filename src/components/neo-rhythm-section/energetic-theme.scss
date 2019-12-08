@@ -1,0 +1,54 @@
+.neo-rhythm-section {
+  margin: 0 auto;
+  height: 1.05rem;
+  width: 3.69rem;
+  background-color: #ffffff;
+}
+
+.neo-rhythm-section-energetic {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  ::before, ::after {
+    content: '';
+    display: block;
+    width: .26rem;
+    height: 1rem;
+    position: absolute;
+    top: -.02rem;
+    background: url("../../common/assets/energetic/rhythm-section/aside.png") no-repeat center;
+    background-size: contain;
+  }
+
+  ::before {
+    left: .09rem;
+  }
+
+  ::after {
+    right: .09rem;
+  }
+
+
+
+  & .neo-header-main-element-energetic {
+    & .title {
+      margin: 0 auto;
+      margin-top: -0.01rem;
+      width: 2.93rem;
+      height: .57rem;
+      background: url("../../common/assets/energetic/rhythm-section/title.png") no-repeat center;
+      background-size: contain;
+    }
+
+    & .subtitle {
+      margin: 0 auto;
+      margin-top: -0.01rem;
+      width: 2.62rem;
+      height: .51rem;
+      background: url("../../common/assets/energetic/rhythm-section/subtitle.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+}
