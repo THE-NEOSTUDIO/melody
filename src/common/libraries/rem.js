@@ -1,4 +1,9 @@
-/* eslint-disable */
+/*
+ * @Author: jujube
+ * @Date: 2019-12-09 00:08
+ * @Description: rem inject
+ * @Last Modified time: 2019-12-09 00:08
+ */
 (function (win, doc) {
   function setHTMLFontSize() {
     win.virtualWidth =
