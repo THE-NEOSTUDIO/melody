@@ -13,6 +13,13 @@ import Context from './common/context';
 import NeoHeader from './components/neo-header';
 import NeoRhythmSection from './components/neo-rhythm-section';
 
+// 引入未完成的组件们
+import NeoRhythmCanvas from './components/neo-rhythm-canvas';
+import NeoDrumSection from './components/neo-drum-section';
+import NeoDrumCanvas from './components/neo-drum-canvas';
+import NeoPlayerController from './components/neo-player-controller';
+import NeoFooter from './components/neo-footer';
+
 
 export default class App extends PureComponent {
 
@@ -31,6 +38,13 @@ export default class App extends PureComponent {
         <div className={`neo neo-${theme}`}>
           <NeoHeader/>
           <NeoRhythmSection/>
+
+          {/*未完成部分*/}
+          <NeoRhythmCanvas/>
+          <NeoDrumSection/>
+          <NeoDrumCanvas/>
+          <NeoPlayerController/>
+          <NeoFooter/>
         </div>
       </Context.Provider>
     )
