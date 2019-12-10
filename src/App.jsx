@@ -12,13 +12,12 @@ import Context from './common/context';
 
 import NeoHeader from './components/neo-header';
 import NeoRhythmSection from './components/neo-rhythm-section';
-
-// 引入未完成的组件们
 import NeoRhythmCanvas from './components/neo-rhythm-canvas';
 import NeoDrumSection from './components/neo-drum-section';
 import NeoDrumCanvas from './components/neo-drum-canvas';
 import NeoPlayerController from './components/neo-player-controller';
 import NeoFooter from './components/neo-footer';
+import KonvaStage from "./common/components/canvas/neo-rhythm-maker";
 
 
 export default class App extends PureComponent {
@@ -27,23 +26,33 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       setContext: this.setState.bind(this),
-      theme: ENERGETIC
+      theme: ENERGETIC,
+      konvaDebug: false,
     }
   }
 
   render() {
-    const {theme} = this.state;
+    const {theme,konvaDebug} = this.state;
     return (
       <Context.Provider value={this.state}>
-        <div className={`neo neo-${theme}`}>
-          <NeoHeader/>
-          <NeoRhythmSection/>
-          <NeoRhythmCanvas/>
-          <NeoDrumSection/>
-          <NeoDrumCanvas/>
-          <NeoPlayerController/>
-          <NeoFooter/>
-        </div>
+        {
+          !konvaDebug ?
+            (
+              <div className={`neo neo-${theme}`}>
+                <NeoHeader/>
+                <NeoRhythmSection/>
+                <NeoRhythmCanvas/>
+                <NeoDrumSection/>
+                <NeoDrumCanvas/>
+                <NeoPlayerController/>
+                <NeoFooter/>
+              </div>
+            )
+            :
+            <div className="konvaDebug">
+              <KonvaStage width={window.innerWidth} height={window.innerHeight}/>
+            </div>
+        }
       </Context.Provider>
     )
   }

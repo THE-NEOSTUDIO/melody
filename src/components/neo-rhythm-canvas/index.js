@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from "../../common/context";
 import './energetic-theme.scss';
+import NeoRhythmMaker from "../../common/components/canvas/neo-rhythm-maker";
+import {transformRemToPixel} from "../../common/utils";
+
 
 class NeoRhythmCanvas extends Component {
   render() {
@@ -8,7 +11,7 @@ class NeoRhythmCanvas extends Component {
     return (
       <div className="neo-rhythm-canvas">
         <div className={theme}>
-          <canvas className="neo-rhythm-canvas">{/*画布*/}</canvas>
+          <NeoRhythmMaker width={transformRemToPixel(3.69)} height={window.innerHeight * 0.3897}/>
         </div>
       </div>
     )
