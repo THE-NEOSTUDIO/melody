@@ -17,7 +17,6 @@ import NeoDrumSection from './components/neo-drum-section';
 import NeoDrumCanvas from './components/neo-drum-canvas';
 import NeoPlayerController from './components/neo-player-controller';
 import NeoFooter from './components/neo-footer';
-import KonvaStage from "./common/components/canvas/neo-rhythm-maker";
 
 
 export default class App extends PureComponent {
@@ -28,30 +27,27 @@ export default class App extends PureComponent {
       setContext: this.setState.bind(this),
       theme: ENERGETIC,
       konvaDebug: false,
+      // 滑动点亮盒子相关
+      active: false,
+      row: undefined,
+      column: undefined,
     }
   }
 
   render() {
-    const {theme,konvaDebug} = this.state;
+    const {theme} = this.state;
     return (
       <Context.Provider value={this.state}>
         {
-          !konvaDebug ?
-            (
-              <div className={`neo neo-${theme}`}>
-                <NeoHeader/>
-                <NeoRhythmSection/>
-                <NeoRhythmCanvas/>
-                <NeoDrumSection/>
-                <NeoDrumCanvas/>
-                <NeoPlayerController/>
-                <NeoFooter/>
-              </div>
-            )
-            :
-            <div className="konvaDebug">
-              <KonvaStage width={window.innerWidth} height={window.innerHeight}/>
-            </div>
+          <div className={`neo neo-${theme}`}>
+            <NeoHeader/>
+            <NeoRhythmSection/>
+            <NeoRhythmCanvas/>
+            <NeoDrumSection/>
+            <NeoDrumCanvas/>
+            <NeoPlayerController/>
+            <NeoFooter/>
+          </div>
         }
       </Context.Provider>
     )
