@@ -1,0 +1,56 @@
+.neo-footer {
+  height: 8.29%;
+  width: 3.75rem;
+  margin-top: 0.5%;
+}
+
+.neo-footer > .energetic {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+
+  & .neo-footer-left-element {
+    width: 1.39rem;
+    height: .44rem;
+    margin-left: .03rem;
+    background: url("../../common/assets/energetic/footer/title-left.png") no-repeat center;
+    background-size: contain;
+  }
+
+  & .neo-footer-right-element {
+    width: 1.39rem;
+    height: .44rem;
+    margin-right: .03rem;
+    background: url("../../common/assets/energetic/footer/title-right.png") no-repeat center;
+    background-size: contain;
+  }
+
+  & .neo-footer-main-element {
+    height: 100%;
+    width: .8rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    & .title {
+      margin: 0 auto .02rem;
+      width: .8rem;
+      height: .35rem;
+      background: url("../../common/assets/energetic/footer/title.png") no-repeat center;
+      background-size: contain;
+    }
+
+    & .subtitle {
+      margin: 0 auto;
+      width: .69rem;
+      height: .12rem;
+      background: url("../../common/assets/energetic/footer/subtitle.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+}

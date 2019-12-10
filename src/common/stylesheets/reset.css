@@ -1,0 +1,102 @@
+/*
+ * @Author: jujube
+ * @Date: 2019-12-09 00:08
+ * @Description: table removed
+ * @Last Modified time: 2019-12-09 00:08
+ */
+
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+abbr,
+address,
+em,
+img,
+dl,
+dt,
+dd,
+ul,
+li,
+fieldset,
+form,
+label,
+article,
+aside,
+canvas,
+footer,
+header,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+html,
+body {
+    height: 100%;
+}
+
+article,
+aside,
+footer,
+header,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    background: transparent;
+    font-size: 12px;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+/* iphonex 适配 */
+
+body {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+    outline: none;
+}

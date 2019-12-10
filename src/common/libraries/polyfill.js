@@ -1,4 +1,9 @@
-// ployfill imported here
+/*
+ * @Author: jujube
+ * @Date: 2019-12-09 00:08
+ * @Description some polyfills
+ * @Last Modified time: 2019-12-09 00:08
+ */
 import 'regenerator-runtime/runtime';
 import 'core-js/features/array/find';
 import 'core-js/features/array/from';

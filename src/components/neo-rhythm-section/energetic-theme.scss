@@ -1,0 +1,61 @@
+.neo-rhythm-section {
+  height: 14.59%;
+  width: 3.69rem;
+  margin: 0 auto;
+}
+
+.neo-rhythm-section > .energetic {
+  height: 100%;
+  width: 100%;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+
+  & .neo-rhythm-section-left-element {
+    width: .28rem;
+    height: 80%;
+    margin-left: .06rem;
+    margin-top: -8%;
+    position: relative;
+    background: url("../../common/assets/energetic/rhythm-section/aside.png") no-repeat center;
+    background-size: contain;
+  }
+
+  & .neo-rhythm-section-right-element {
+    width: .28rem;
+    height: 80%;
+    margin-right: .06rem;
+    margin-top: -8%;
+    position: relative;
+    background: url("../../common/assets/energetic/rhythm-section/aside.png") no-repeat center;
+    background-size: contain;
+  }
+
+  & .neo-rhythm-section-main-element {
+    height: 100%;
+    width: 2.93rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+
+    & .title {
+      margin: 0 auto;
+      width: 2.93rem;
+      height: .55rem;
+      background: url("../../common/assets/energetic/rhythm-section/title.png") no-repeat center;
+      background-size: contain;
+    }
+
+    & .subtitle {
+      margin: 0 auto;
+      width: 2.62rem;
+      height: .33rem;
+      background: url("../../common/assets/energetic/rhythm-section/subtitle.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+}
+
+

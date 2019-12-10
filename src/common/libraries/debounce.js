@@ -1,4 +1,9 @@
-/* eslint-disable */
+/*
+ * @Author: jujube
+ * @Date: 2019-12-09 00:08
+ * @Description: inject from lodash
+ * @Last Modified time: 2019-12-09 00:08
+ */
 function isObject(value) {
   const type = typeof value;
   return value !== null && (type === 'object' || type === 'function');
