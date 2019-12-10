@@ -13,13 +13,14 @@ class NeoHeader extends Component {
   render() {
     const {theme} = this.props.context;
     return (
-      <div className={`neo-header`}>
-        <div style={{display: theme === ENERGETIC ? 'flex' : 'none'}} className={theme}>
+      <div className="neo-header">
+        <div
+          style={{display: theme === ENERGETIC ? 'flex' : 'none'}}
+          className={theme}
+        >
+          {/*ENERGETIC THEME*/}
           <div className="neo-header-left-element">{/*左侧元素*/}</div>
-          <div
-             /* ENERGETIC主题色 */
-            className={`neo-header-main-element neo-header-main-element`
-            }>
+          <div className="neo-header-main-element">
             <div className="title">{/*霓虹制造局*/}</div>
             <div className="subtitle">{/*NEO STUDIO*/}</div>
           </div>

@@ -13,13 +13,15 @@ class NeoRhythmSection extends Component {
   render() {
     const {theme} = this.props.context;
     return (
-      <div className={`neo-rhythm-section neo-rhythm-section-${ENERGETIC}`}>
-        <div
-          style={{display: theme === ENERGETIC ? 'block' : 'none'}} /* ENERGETIC主题色 */
-          className={`neo-header-main-element neo-header-main-element-${theme}`
-          }>
-          <div className="title">{/*霓虹制造局*/}</div>
-          <div className="subtitle">{/*NEO STUDIO*/}</div>
+      <div className="neo-rhythm-section">
+        <div style={{display: theme === ENERGETIC ? 'flex' : 'none'}} className={theme}>
+          {/*ENERGETIC主题色*/}
+          <div className="neo-rhythm-section-left-element">{/*左侧元素*/}</div>
+          <div className="neo-rhythm-section-main-element">
+            <div className="title">{/*新年音乐卡片*/}</div>
+            <div className="subtitle">{/*rhythm icon*/}</div>
+          </div>
+          <div className="neo-rhythm-section-right-element">{/*右侧元素*/}</div>
         </div>
         {/*TODO 其他主题*/}
       </div>
