@@ -1,6 +1,7 @@
 .neo-rhythm-section {
   height: 14.59%;
-  width: 3.75rem;
+  width: 3.69rem;
+  margin: 0 auto;
 }
 
 .neo-rhythm-section > .energetic {
@@ -14,7 +15,7 @@
   & .neo-rhythm-section-left-element {
     width: .28rem;
     height: 80%;
-    margin-left: .08rem;
+    margin-left: .06rem;
     margin-top: -8%;
     position: relative;
     background: url("../../common/assets/energetic/rhythm-section/aside.png") no-repeat center;
@@ -24,7 +25,7 @@
   & .neo-rhythm-section-right-element {
     width: .28rem;
     height: 80%;
-    margin-right: .08rem;
+    margin-right: .06rem;
     margin-top: -8%;
     position: relative;
     background: url("../../common/assets/energetic/rhythm-section/aside.png") no-repeat center;
@@ -36,7 +37,7 @@
     width: 2.93rem;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
     & .title {
@@ -56,3 +57,5 @@
     }
   }
 }
+
+

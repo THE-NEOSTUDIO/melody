@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
-import img from './temporary-canvas.png'
+import {connect} from "../../common/context";
+import './energetic-theme.scss';
 
-export default class extends Component {
+class NeoRhythmCanvas extends Component {
   render() {
+    const {theme} = this.props.context;
     return (
-      <div style={{
-        margin: '0 auto',
-        marginTop: '0.02rem',
-        background: `url("${img}") no-repeat center`,
-        backgroundSize: 'cover',
-        width: '3.69rem',
-        height: '2.33rem'
-      }}>
-
+      <div className="neo-rhythm-canvas">
+        <div className={theme}>
+          <canvas className="neo-rhythm-canvas">{/*画布*/}</canvas>
+        </div>
       </div>
     )
   }
 }
+
+export default connect(NeoRhythmCanvas);

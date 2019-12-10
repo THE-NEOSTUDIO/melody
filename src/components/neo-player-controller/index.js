@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
-import img from "./controller-tem.png";
+import {connect} from "../../common/context";
+import './energetic-theme.scss';
 
-export default class extends Component{
+class NeoRhythmCanvas extends Component {
   render() {
+    const {theme} = this.props.context;
     return (
-      <div style={{
-        margin: '0 auto',
-        marginTop: '0.02rem',
-        background: `url("${img}") no-repeat center`,
-        backgroundSize: 'cover',
-        width: '3.69rem',
-        height: '.55rem'
-      }}>
-
+      <div className="neo-player-controller">
+        <div className={theme}>
+          <canvas className="neo-player-controller">{/*controller*/}</canvas>
+        </div>
       </div>
     )
   }
 }
+
+export default connect(NeoRhythmCanvas);

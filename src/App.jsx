@@ -38,8 +38,6 @@ export default class App extends PureComponent {
         <div className={`neo neo-${theme}`}>
           <NeoHeader/>
           <NeoRhythmSection/>
-
-          {/*未完成部分*/}
           <NeoRhythmCanvas/>
           <NeoDrumSection/>
           <NeoDrumCanvas/>

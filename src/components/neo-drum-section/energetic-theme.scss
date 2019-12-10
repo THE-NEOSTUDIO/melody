@@ -1,0 +1,30 @@
+.neo-drum-section {
+  height: 5.31%;
+  width: 3.69rem;
+  margin: 0 auto;
+  margin-top: 0.33%;
+}
+
+.neo-drum-section > .energetic {
+  height: 100%;
+  width: 100%;
+  background: white;
+
+  & .neo-drum-section-main-element {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .subtitle {
+      margin: 0 auto;
+      width: 3.56rem;
+      height: .32rem;
+      background: url("../../common/assets/energetic/drum-section/subtitle.png") no-repeat center;
+      background-size: contain;
+    }
+  }
+}
+
+

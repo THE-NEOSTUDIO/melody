@@ -1,19 +1,20 @@
 import React, {Component} from 'react';
-import img from "./tem-drum.png";
+import {connect} from "../../common/context";
+import './energetic-theme.scss';
 
-export default class extends Component{
+class NeoDrumSection extends Component {
   render() {
+    const {theme} = this.props.context;
     return (
-      <div style={{
-        margin: '0 auto',
-        marginTop: '0.02rem',
-        background: `url("${img}") no-repeat center`,
-        backgroundSize: 'cover',
-        width: '3.69rem',
-        height: '.49rem'
-      }}>
-
+      <div className="neo-drum-section">
+        <div className={theme}>
+          <div className="neo-drum-section-main-element">
+            <div className="subtitle">{/*subtitle icon*/}</div>
+          </div>
+        </div>
       </div>
     )
   }
 }
+
+export default connect(NeoDrumSection);

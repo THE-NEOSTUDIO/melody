@@ -1,4 +1,5 @@
 .neo-header {
+  margin-top: 0.5%;
   height: 8.29%;
   width: 3.75rem;
 }
@@ -13,17 +14,17 @@
   align-items: center;
 
   & .neo-header-left-element {
-    width: .68rem;
-    height: .53rem;
-    position: relative;
+    width: .69rem;
+    height: .47rem;
+    margin-left: .03rem;
     background: url("../../common/assets/energetic/header/title-left.png") no-repeat center;
     background-size: contain;
   }
 
   & .neo-header-right-element {
-    width: .68rem;
-    height: .53rem;
-    position: relative;
+    width: .69rem;
+    height: .47rem;
+    margin-right: .03rem;
     background: url("../../common/assets/energetic/header/title-right.png") no-repeat center;
     background-size: contain;
   }
