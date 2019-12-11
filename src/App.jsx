@@ -12,8 +12,6 @@ import Context from './common/context';
 
 import NeoHeader from './components/neo-header';
 import NeoRhythmSection from './components/neo-rhythm-section';
-
-// 引入未完成的组件们
 import NeoRhythmCanvas from './components/neo-rhythm-canvas';
 import NeoDrumSection from './components/neo-drum-section';
 import NeoDrumCanvas from './components/neo-drum-canvas';
@@ -27,7 +25,12 @@ export default class App extends PureComponent {
     super(props);
     this.state = {
       setContext: this.setState.bind(this),
-      theme: ENERGETIC
+      theme: ENERGETIC,
+      konvaDebug: false,
+      // 滑动点亮盒子相关
+      active: false,
+      row: undefined,
+      column: undefined,
     }
   }
 
@@ -35,15 +38,17 @@ export default class App extends PureComponent {
     const {theme} = this.state;
     return (
       <Context.Provider value={this.state}>
-        <div className={`neo neo-${theme}`}>
-          <NeoHeader/>
-          <NeoRhythmSection/>
-          <NeoRhythmCanvas/>
-          <NeoDrumSection/>
-          <NeoDrumCanvas/>
-          <NeoPlayerController/>
-          <NeoFooter/>
-        </div>
+        {
+          <div className={`neo neo-${theme}`}>
+            <NeoHeader/>
+            <NeoRhythmSection/>
+            <NeoRhythmCanvas/>
+            <NeoDrumSection/>
+            <NeoDrumCanvas/>
+            <NeoPlayerController/>
+            <NeoFooter/>
+          </div>
+        }
       </Context.Provider>
     )
   }

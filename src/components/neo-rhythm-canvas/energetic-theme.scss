@@ -6,11 +6,10 @@
 }
 
 .neo-rhythm-canvas > .energetic {
-  width: 100%;
+  width: 3.69rem;
+  background: white;
   height: 100%;
-
-  .neo-rhythm-canvas {
-    width: 100%;
-    height: 100%;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
