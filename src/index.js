@@ -10,6 +10,7 @@ import './App.scss';
 import './common/libraries/polyfill.js';
 import './common/libraries/rem.js';
 import './common/libraries/bounce-disabled';
+import StartAudioContext from './common/libraries/start-audio-context';
 
 
 // App Element
