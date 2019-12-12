@@ -8,6 +8,7 @@ import {
   LA_CUBE_COLOR,
   EMPTY_CUBE_COLOR
 } from "../../../../constants/color";
+import {throttle} from "../../../../libraries/debounce";
 
 class NeoCube extends Component {
 
@@ -26,8 +27,7 @@ class NeoCube extends Component {
     }
   }
 
-  calculateRhythmColor() {
-    const {active, row} = this.state;
+  static calculateRhythmColor(active, row) {
     if (!active) {
       return EMPTY_CUBE_COLOR
     }
@@ -48,7 +48,29 @@ class NeoCube extends Component {
     }
   }
 
+  static calculateRhythm(row) {
+    switch (row) {
+      case 0:
+        return "C4";
+      case 1:
+        return "A3";
+      case 2:
+        return "G3";
+      case 3:
+        return "E3";
+      case 4:
+        return "D3";
+      case 5:
+        return "C3";
+    }
+  }
+
   setActive(active) {
+    const {row, active: previousActive} = this.state;
+    // 声音播放
+    if (active && !previousActive) {
+      window.sampler.triggerAttackRelease(NeoCube.calculateRhythm(row), window.sampler.duration).toMaster()
+    }
     this.setState({
       active,
     });
@@ -67,12 +89,12 @@ class NeoCube extends Component {
         height={height}
         x={x}
         y={y}
-        fill={this.calculateRhythmColor()}
+        fill={NeoCube.calculateRhythmColor(active, row)}
         onTouchStart={() => {
           setActiveOnTouchStart(active);
-          this.setActive(!active)
+          this.setActive(!active);
         }}
-        onTouchMove={() => setActiveOnTouchMove(row, column)}
+        onTouchMove={throttle(setActiveOnTouchMove.bind(null, row, column), 500)}
         onTouchEnd={() => setActiveOnTouchEnd()}
       />
     )

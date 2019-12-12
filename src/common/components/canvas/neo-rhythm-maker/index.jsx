@@ -33,7 +33,7 @@ class NeoRhythmMaker extends PureComponent {
   }
 
   setActiveOnTouchMove(row, column) {
-    this.refList[row][column].setActive(this.active);
+      this.refList[row][column].setActive(this.active);
   }
 
   setActiveOnTouchStart(active) {

@@ -17,6 +17,7 @@ import NeoDrumSection from './components/neo-drum-section';
 import NeoDrumCanvas from './components/neo-drum-canvas';
 import NeoPlayerController from './components/neo-player-controller';
 import NeoFooter from './components/neo-footer';
+import NeoSoundGenerator from "./common/components/audio/neo-sound-generator";
 
 
 export default class App extends PureComponent {
@@ -31,6 +32,10 @@ export default class App extends PureComponent {
       active: false,
       row: undefined,
       column: undefined,
+      // Sound相关
+      sound: 'synthesizer', // 默认声音类型
+      initialized: false, // 是否首次加载
+      loading: false, // 是否正在加载声音
     }
   }
 
@@ -47,6 +52,7 @@ export default class App extends PureComponent {
             <NeoDrumCanvas/>
             <NeoPlayerController/>
             <NeoFooter/>
+            <NeoSoundGenerator/>
           </div>
         }
       </Context.Provider>
