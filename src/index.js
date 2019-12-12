@@ -14,10 +14,15 @@ import './audio-preparation';
 
 import './common/components/audio/neo-player/index';
 
+// import NeoBuffer from "./common/libraries/neo-buffer";
+//
+// let a = new NeoBuffer();
+// a.loadAll();
+
 
 // App Element
 import App from './App.jsx';
 
 
 // ReactDOM render
-ReactDOM.render(<div/>, document.querySelector("#root"));
+ReactDOM.render(<App/>, document.querySelector("#root"));

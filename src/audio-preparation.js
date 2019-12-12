@@ -16,7 +16,7 @@ document.body.appendChild(tapperElement);
 
 // 点击某元素 初始化AudioContext
 domReady(function () {
-  if (isAndroid || !isIOS) {
+  if (isAndroid || isIOS) {
     new StartAudioContext(Transport.context, tapperElement).then(() => {
       tapperElement.remove();
     })
