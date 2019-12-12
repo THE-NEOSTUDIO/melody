@@ -10167,6 +10167,16 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
+tone@^13.8.25:
+  version "13.8.25"
+  resolved "https://registry.npm.taobao.org/tone/download/tone-13.8.25.tgz#057eefb39d4c749524db0ca210e34303cdc3c025"
+  integrity sha1-BX7vs51MdJUk2wyiEONDA83DwCU=
+
+tone@^13.8.32:
+  version "13.8.32"
+  resolved "https://registry.npm.taobao.org/tone/download/tone-13.8.32.tgz#48f29ae126c0e608fd88ba2bb1a0adac2c38d749"
+  integrity sha1-SPKa4SbA5gj9iLorsaCtrCw410k=
+
 tough-cookie@^2.3.3, tough-cookie@^2.3.4, tough-cookie@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"

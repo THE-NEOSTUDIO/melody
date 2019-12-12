@@ -10,7 +10,9 @@ import './App.scss';
 import './common/libraries/polyfill.js';
 import './common/libraries/rem.js';
 import './common/libraries/bounce-disabled';
-import StartAudioContext from './common/libraries/start-audio-context';
+import './audio-preparation';
+
+import './common/components/audio/neo-player/index';
 
 
 // App Element
@@ -18,4 +20,4 @@ import App from './App.jsx';
 
 
 // ReactDOM render
-ReactDOM.render(<App/>, document.querySelector("#root"));
+ReactDOM.render(<div/>, document.querySelector("#root"));
