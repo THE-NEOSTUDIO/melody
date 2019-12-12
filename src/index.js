@@ -10,7 +10,14 @@ import './App.scss';
 import './common/libraries/polyfill.js';
 import './common/libraries/rem.js';
 import './common/libraries/bounce-disabled';
-import StartAudioContext from './common/libraries/start-audio-context';
+import './audio-preparation';
+
+import './common/components/audio/neo-player/index';
+
+// import NeoBuffer from "./common/libraries/neo-buffer";
+//
+// let a = new NeoBuffer();
+// a.loadAll();
 
 
 // App Element
