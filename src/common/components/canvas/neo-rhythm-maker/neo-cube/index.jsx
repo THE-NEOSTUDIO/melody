@@ -66,9 +66,9 @@ class NeoCube extends Component {
   }
 
   setActive(active) {
-    const {row, active: previousActive} = this.state;
+    const {row, active: previousActive, initialized, loading} = this.state;
     // 声音播放
-    if (active && !previousActive) {
+    if (active && !previousActive || !initialized || loading) {
       window.sampler.triggerAttackRelease(NeoCube.calculateRhythm(row), window.sampler.duration).toMaster()
     }
     this.setState({

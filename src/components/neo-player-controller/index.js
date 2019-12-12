@@ -8,7 +8,11 @@ class NeoRhythmCanvas extends Component {
     return (
       <div className="neo-player-controller">
         <div className={theme}>
-          <canvas className="neo-player-controller">{/*controller*/}</canvas>
+          <div onClick={() => {
+            this.props.context.setContext({
+              sound: 'wood'
+            })
+          }} className="neo-player-controller"></div>
         </div>
       </div>
     )

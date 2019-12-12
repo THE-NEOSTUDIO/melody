@@ -48,6 +48,9 @@ class NeoSoundGenerator extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  init() {
     Object.defineProperty(window, "sampler", {
       value: new Tone.Sampler(),
       writable: true,
@@ -62,35 +65,43 @@ class NeoSoundGenerator extends Component {
     });
   }
 
+  reset() {
+    window.sampler = null;
+  }
+
   componentDidMount() {
+    this.reset();
+    this.init();
     this.loadSoundAndGenerateSoundMap(true);
   }
 
-  componentDidUpdate() {
-    this.loadSoundAndGenerateSoundMap();
-  }
-
-  loadSoundAndGenerateSoundMap(isMounting) {
-    const {initialized, loading, sound, setContext} = this.props.context;
-
-    // initializing hook
-    NeoSoundGenerator.setRhythmADSREnvelope(sound);
-    if (isMounting && (initialized || loading)) {
-      return null;
-    }
-
+  componentDidUpdate(props) {
+    const {loading, setContext} = props.context;
     // prohibit multiple-fetch
     if (loading) {
       return null;
     }
+
     setContext({
       loading: true
     });
 
+    this.reset();
+    this.init();
+    this.loadSoundAndGenerateSoundMap();
+  }
+
+  loadSoundAndGenerateSoundMap(isMounting) {
+    const {sound, setContext} = this.props.context;
+
+    // initializing hook
+    NeoSoundGenerator.setRhythmADSREnvelope(sound);
+
+
     // set App Context
     Promise.all([this.generateRhythmSound(), this.generateDrumSound()])
-      .then(
-        () => isMounting ?
+      .then(() => {
+        isMounting ?
           setContext({
             initialized: true,
             loading: false
@@ -98,16 +109,19 @@ class NeoSoundGenerator extends Component {
           setContext({
             loading: false
           })
-      )
+      }).catch(e => {
+      console.log(e);
+    })
   }
 
   generateRhythmSound() {
     const {sound} = this.props.context;
+    console.log(sound);
     return new Promise((resolve) => {
       const APIs = GET_RHYTHM_API_LIST(sound);
       if (APIs && APIs.length > 0) {
         // 主逻辑 axios兼容性好，这里选择axios
-        Promise.all(APIs.map(url => neoFetch({url, method: 'get', responseType: 'arraybuffer'})))
+        return Promise.all(APIs.map(url => neoFetch({url, method: 'get', responseType: 'arraybuffer'})))
           .then(results => results.map(result => result.data))
           .then(resources => Promise.all(resources.map(data => Tone.context.decodeAudioData(data))))
           .then(([C3Buffer, Ds3Buffer, Fs3Buffer, A3Buffer, C4Buffer]) => Promise.all([
