@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from "../../../context";
-import {Stage, Layer, Rect, Line} from 'react-konva';
+import {Stage, Layer, Line} from 'react-konva';
 import {BOLD_LINE_COLOR, EMPTY_CUBE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
 import NeoCube from "./neo-cube";
 
@@ -11,18 +11,20 @@ class NeoRhythmMaker extends PureComponent {
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null]
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
   ];
 
   constructor(props) {
     super(props);
-    const {width, height} = props;
+    const {width, height, editable = true} = props;
     this.state = {
+      editable,
       initialized: width && height, // 既有宽 又有高 则为加载成功
       width,
       height,
       cubeWidth: width / 8, // 每一格的宽度
-      cubeHeight: height / 5, // 每一格的高度
+      cubeHeight: height / 6, // 每一格的高度
     }
   }
 
@@ -43,18 +45,18 @@ class NeoRhythmMaker extends PureComponent {
   }
 
   initializeCubeGroup() {
-    const {cubeWidth, cubeHeight} = this.state;
+    const {cubeWidth, cubeHeight, editable} = this.state;
     let currentXCoordinate = 0;
     let currentYCoordinate = 0;
     const cubeGroup = [];
 
-    for (let row = 0; row < 5; row++) {
+    for (let row = 0; row < 6; row++) {
       for (let column = 0; column < 8; column++) {
         cubeGroup.push(<NeoCube
           ref={ref => this.setElementInRefList(ref, row, column)}
-          setActiveOnTouchStart={this.setActiveOnTouchStart.bind(this)}
-          setActiveOnTouchMove={this.setActiveOnTouchMove.bind(this)}
-          setActiveOnTouchEnd={this.setActiveOnTouchEnd.bind(this)}
+          setActiveOnTouchStart={editable ? this.setActiveOnTouchStart.bind(this): null}
+          setActiveOnTouchMove={editable ? this.setActiveOnTouchMove.bind(this) : null}
+          setActiveOnTouchEnd={editable ? this.setActiveOnTouchEnd.bind(this): null}
           row={row}
           column={column}
           key={`${currentYCoordinate}${currentXCoordinate}`}
@@ -90,7 +92,7 @@ class NeoRhythmMaker extends PureComponent {
       />)
     }
 
-    for (let row = 1; row < 8; row++) {
+    for (let row = 1; row < 6; row++) {
       lineGroup.push(<Line
         key={`${row}row`}
         stroke={LIGHT_LINE_COLOR}

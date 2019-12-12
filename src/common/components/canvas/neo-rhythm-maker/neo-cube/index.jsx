@@ -32,15 +32,16 @@ class NeoCube extends Component {
       return EMPTY_CUBE_COLOR
     }
     switch (row) {
-      case 0:
-        return LA_CUBE_COLOR;
       case 1:
-        return SO_CUBE_COLOR;
+        return LA_CUBE_COLOR;
       case 2:
-        return MI_CUBE_COLOR;
+        return SO_CUBE_COLOR;
       case 3:
-        return RE_CUBE_COLOR;
+        return MI_CUBE_COLOR;
       case 4:
+        return RE_CUBE_COLOR;
+      case 5:
+      case 0:
         return DO_CUBE_COLOR;
       default:
         return EMPTY_CUBE_COLOR;
@@ -67,9 +68,12 @@ class NeoCube extends Component {
         x={x}
         y={y}
         fill={this.calculateRhythmColor()}
-        onTouchStart={() => {setActiveOnTouchStart(active);this.setActive(!active)}}
-        onTouchMove={()=>setActiveOnTouchMove(row, column)}
-        onTouchEnd={()=>setActiveOnTouchEnd()}
+        onTouchStart={() => {
+          setActiveOnTouchStart(active);
+          this.setActive(!active)
+        }}
+        onTouchMove={() => setActiveOnTouchMove(row, column)}
+        onTouchEnd={() => setActiveOnTouchEnd()}
       />
     )
   }
