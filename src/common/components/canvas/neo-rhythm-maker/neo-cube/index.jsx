@@ -8,6 +8,7 @@ import {
   LA_CUBE_COLOR,
   EMPTY_CUBE_COLOR
 } from "../../../../constants/color";
+import player from "../../../audio/neo-player";
 import {throttle} from "../../../../libraries/debounce";
 
 class NeoCube extends Component {
@@ -66,10 +67,13 @@ class NeoCube extends Component {
   }
 
   setActive(active) {
-    const {row, active: previousActive} = this.state;
+    const {row, column, active: previousActive} = this.state;
     // 声音播放
     if (active && !previousActive) {
-      window.sampler.triggerAttackRelease(NeoCube.calculateRhythm(row), window.sampler.duration).toMaster()
+      player.tap(NeoCube.calculateRhythm(row), column);
+    }
+    if (!active && previousActive) {
+      player.unTap(NeoCube.calculateRhythm(row), column);
     }
     this.setState({
       active,

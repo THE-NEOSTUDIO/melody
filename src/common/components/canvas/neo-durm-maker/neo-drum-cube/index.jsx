@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import player from "../../../audio/neo-player";
 import {Rect} from 'react-konva';
 import {
   DO_CUBE_COLOR,
@@ -58,10 +59,13 @@ class NeoDrumCube extends Component {
   }
 
   setActive(active) {
-    const {row, active: previousActive, loading} = this.state;
+    const {row, column, active: previousActive} = this.state;
     // 声音播放
-    if (active && !previousActive && !loading) {
-      window.drum.triggerAttackRelease(NeoDrumCube.calculateRhythm(row), window.drum.duration).toMaster()
+    if (active && !previousActive) {
+      player.drumming(NeoDrumCube.calculateRhythm(row), column);
+    }
+    if (!active && previousActive) {
+      player.unDrumming(NeoDrumCube.calculateRhythm(row), column);
     }
     this.setState({
       active,
