@@ -33,9 +33,9 @@ export default class App extends PureComponent {
       row: undefined,
       column: undefined,
       // Sound相关
-      sound: 'string', // 默认声音类型
-      initialized: false, // 是否首次加载
-      loading: false, // 是否正在加载声音
+      sound: 'piano', // 默认声音类型
+      loading: false, // 是否正在加载
+      // TODO initialize状态
     }
   }
 

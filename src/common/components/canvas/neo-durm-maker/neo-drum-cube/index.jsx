@@ -10,7 +10,7 @@ import {
 } from "../../../../constants/color";
 import {throttle} from "../../../../libraries/debounce";
 
-class NeoCube extends Component {
+class NeoDrumCube extends Component {
 
   constructor(props) {
     super(props);
@@ -53,23 +53,15 @@ class NeoCube extends Component {
       case 0:
         return "C4";
       case 1:
-        return "A3";
-      case 2:
-        return "G3";
-      case 3:
-        return "E3";
-      case 4:
-        return "D3";
-      case 5:
         return "C3";
     }
   }
 
   setActive(active) {
-    const {row, active: previousActive} = this.state;
+    const {row, active: previousActive, loading} = this.state;
     // 声音播放
-    if (active && !previousActive) {
-      window.sampler.triggerAttackRelease(NeoCube.calculateRhythm(row), window.sampler.duration).toMaster()
+    if (active && !previousActive && !loading) {
+      window.drum.triggerAttackRelease(NeoDrumCube.calculateRhythm(row), window.drum.duration).toMaster()
     }
     this.setState({
       active,
@@ -89,7 +81,7 @@ class NeoCube extends Component {
         height={height}
         x={x}
         y={y}
-        fill={NeoCube.calculateRhythmColor(active, row)}
+        fill={NeoDrumCube.calculateRhythmColor(active, row)}
         onTouchStart={() => {
           setActiveOnTouchStart(active);
           this.setActive(!active);
@@ -101,4 +93,4 @@ class NeoCube extends Component {
   }
 }
 
-export default NeoCube;
+export default NeoDrumCube;

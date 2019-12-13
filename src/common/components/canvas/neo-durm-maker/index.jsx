@@ -2,15 +2,11 @@ import React, {PureComponent} from 'react';
 import {connect} from "../../../context";
 import {Stage, Layer, Line} from 'react-konva';
 import {BOLD_LINE_COLOR, EMPTY_CUBE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
-import NeoCube from "./neo-cube";
+import NeoDrumCube from "./neo-drum-cube";
 
-class NeoRhythmMaker extends PureComponent {
+class NeoDrumMaker extends PureComponent {
 
   refList = [
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
   ];
@@ -23,7 +19,7 @@ class NeoRhythmMaker extends PureComponent {
       width,
       height,
       cubeWidth: width / 8, // 每一格的宽度
-      cubeHeight: height / 6, // 每一格的高度
+      cubeHeight: height / 2, // 每一格的高度
     }
   }
 
@@ -32,7 +28,7 @@ class NeoRhythmMaker extends PureComponent {
   }
 
   setActiveOnTouchMove(row, column) {
-      this.refList[row][column].setActive(this.active);
+    this.refList[row][column].setActive(this.active);
   }
 
   setActiveOnTouchStart(active) {
@@ -49,16 +45,16 @@ class NeoRhythmMaker extends PureComponent {
     let currentYCoordinate = 0;
     const cubeGroup = [];
 
-    for (let row = 0; row < 6; row++) {
+    for (let row = 0; row < 2; row++) {
       for (let column = 0; column < 8; column++) {
-        cubeGroup.push(<NeoCube
+        cubeGroup.push(<NeoDrumCube
           ref={ref => this.setElementInRefList(ref, row, column)}
-          setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this): null}
+          setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this) : null}
           setActiveOnTouchMove={!loading ? this.setActiveOnTouchMove.bind(this) : null}
-          setActiveOnTouchEnd={!loading ? this.setActiveOnTouchEnd.bind(this): null}
+          setActiveOnTouchEnd={!loading ? this.setActiveOnTouchEnd.bind(this) : null}
           row={row}
           column={column}
-          key={`${currentYCoordinate}${currentXCoordinate}`}
+          key={`${currentYCoordinate}${currentXCoordinate}drum`}
           width={cubeWidth}
           height={cubeHeight}
           x={currentXCoordinate}
@@ -76,6 +72,7 @@ class NeoRhythmMaker extends PureComponent {
     const {cubeWidth, cubeHeight} = this.state;
     const {width, height} = this.state;
     const lineGroup = [];
+
     for (let column = 1; column < 8; column++) {
       lineGroup.push(<Line
         key={`${column}column`}
@@ -90,7 +87,7 @@ class NeoRhythmMaker extends PureComponent {
       />)
     }
 
-    for (let row = 1; row < 6; row++) {
+    for (let row = 1; row < 2; row++) {
       lineGroup.push(<Line
         key={`${row}row`}
         stroke={LIGHT_LINE_COLOR}
@@ -133,4 +130,4 @@ class NeoRhythmMaker extends PureComponent {
   }
 }
 
-export default connect(NeoRhythmMaker);
+export default connect(NeoDrumMaker);
