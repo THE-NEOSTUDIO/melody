@@ -7,6 +7,7 @@ import {Component} from 'react';
 class NeoPlayer extends Component {
 
   constructor(props) {
+    Tone.Transport.bpm.value = 200;
     super(props);
     this.index = 0;
     this.rhythmNotePad = [[], [], [], [], [], [], [], []]; // 乐句
