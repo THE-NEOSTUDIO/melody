@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from "../../../context";
 import {Stage, Layer, Line} from 'react-konva';
-import {BOLD_LINE_COLOR, EMPTY_CUBE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
+import {BOLD_LINE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
 import NeoDrumCube from "./neo-drum-cube";
 
 class NeoDrumMaker extends PureComponent {
@@ -10,6 +10,12 @@ class NeoDrumMaker extends PureComponent {
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
   ];
+
+  reset() {
+    this.refList.filter(row => {
+      row.forEach(cube => cube.setActive && cube.setActive(false));
+    })
+  }
 
   constructor(props) {
     super(props);
@@ -20,6 +26,16 @@ class NeoDrumMaker extends PureComponent {
       height,
       cubeWidth: width / 8, // 每一格的宽度
       cubeHeight: height / 2, // 每一格的高度
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.context.reset && !prevProps.context.reset) {
+      this.reset();
+      this.props.player.stop();
+      this.props.context.setContext({
+        reset: false
+      })
     }
   }
 
@@ -48,6 +64,7 @@ class NeoDrumMaker extends PureComponent {
     for (let row = 0; row < 2; row++) {
       for (let column = 0; column < 8; column++) {
         cubeGroup.push(<NeoDrumCube
+          player={this.props.player}
           ref={ref => this.setElementInRefList(ref, row, column)}
           setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this) : null}
           setActiveOnTouchMove={!loading ? this.setActiveOnTouchMove.bind(this) : null}

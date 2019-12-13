@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from "../../../context";
 import {Stage, Layer, Line} from 'react-konva';
-import {BOLD_LINE_COLOR, EMPTY_CUBE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
+import {BOLD_LINE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
 import NeoCube from "./neo-cube";
 
 class NeoRhythmMaker extends PureComponent {
@@ -15,6 +15,12 @@ class NeoRhythmMaker extends PureComponent {
     [null, null, null, null, null, null, null, null],
   ];
 
+  reset() {
+    this.refList.filter(row => {
+      row.forEach(cube => cube.setActive && cube.setActive(false));
+    })
+  }
+
   constructor(props) {
     super(props);
     const {width, height} = props;
@@ -27,12 +33,18 @@ class NeoRhythmMaker extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.context.reset && !prevProps.context.reset) {
+      this.reset();
+    }
+  }
+
   setElementInRefList(ref, row, column) {
     this.refList[row][column] = ref;
   }
 
   setActiveOnTouchMove(row, column) {
-      this.refList[row][column].setActive(this.active);
+    this.refList[row][column].setActive(this.active);
   }
 
   setActiveOnTouchStart(active) {
@@ -45,6 +57,7 @@ class NeoRhythmMaker extends PureComponent {
 
   initializeCubeGroup() {
     const {cubeWidth, cubeHeight, loading} = this.state;
+    const {columnIndex} = this.props.context;
     let currentXCoordinate = 0;
     let currentYCoordinate = 0;
     const cubeGroup = [];
@@ -52,10 +65,12 @@ class NeoRhythmMaker extends PureComponent {
     for (let row = 0; row < 6; row++) {
       for (let column = 0; column < 8; column++) {
         cubeGroup.push(<NeoCube
+          columnIndex={columnIndex}
+          player={this.props.player}
           ref={ref => this.setElementInRefList(ref, row, column)}
-          setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this): null}
+          setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this) : null}
           setActiveOnTouchMove={!loading ? this.setActiveOnTouchMove.bind(this) : null}
-          setActiveOnTouchEnd={!loading ? this.setActiveOnTouchEnd.bind(this): null}
+          setActiveOnTouchEnd={!loading ? this.setActiveOnTouchEnd.bind(this) : null}
           row={row}
           column={column}
           key={`${currentYCoordinate}${currentXCoordinate}`}

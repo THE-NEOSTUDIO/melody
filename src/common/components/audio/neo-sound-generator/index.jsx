@@ -125,7 +125,7 @@ class NeoSoundGenerator extends Component {
 
   /* update时需要优先reset */
   reset() {
-    window.sampler = null;
+    // window.sampler = null;
   }
 
   componentDidMount() {
@@ -138,7 +138,7 @@ class NeoSoundGenerator extends Component {
     if (prevProps.context.sound === this.props.context.sound) {
       return null;
     }
-    this.init();
+    // this.init();
     this.loadSoundAndGenerateSoundMap();
   }
 

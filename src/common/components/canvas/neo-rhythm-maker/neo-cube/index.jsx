@@ -8,7 +8,6 @@ import {
   LA_CUBE_COLOR,
   EMPTY_CUBE_COLOR
 } from "../../../../constants/color";
-import player from "../../../audio/neo-player";
 import {throttle} from "../../../../libraries/debounce";
 
 class NeoCube extends Component {
@@ -49,6 +48,14 @@ class NeoCube extends Component {
     }
   }
 
+  static calculateCurrentRhythmColor(active) {
+    if (active) {
+      return `black`
+    } else {
+      return 'rgba(90, 180, 245, 0.4)'
+    }
+  }
+
   static calculateRhythm(row) {
     switch (row) {
       case 0:
@@ -68,6 +75,7 @@ class NeoCube extends Component {
 
   setActive(active) {
     const {row, column, active: previousActive} = this.state;
+    const {player} = this.props;
     // 声音播放
     if (active && !previousActive) {
       player.tap(NeoCube.calculateRhythm(row), column);
@@ -82,6 +90,7 @@ class NeoCube extends Component {
 
   render() {
     const {width, height, x, y, column, row, active} = this.state;
+    const {columnIndex} = this.props;
     const {
       setActiveOnTouchStart,
       setActiveOnTouchMove,
@@ -93,7 +102,7 @@ class NeoCube extends Component {
         height={height}
         x={x}
         y={y}
-        fill={NeoCube.calculateRhythmColor(active, row)}
+        fill={columnIndex !== column ? NeoCube.calculateRhythmColor(active, row) : NeoCube.calculateCurrentRhythmColor(active)}
         onTouchStart={() => {
           setActiveOnTouchStart(active);
           this.setActive(!active);

@@ -11,7 +11,7 @@ class NeoRhythmCanvas extends Component {
     return (
       <div className="neo-rhythm-canvas">
         <div className={theme}>
-          <NeoRhythmMaker editable={true} width={transformRemToPixel(3.69)} height={window.innerHeight * 0.40425}/>
+          <NeoRhythmMaker player={this.props.player} editable={true} width={transformRemToPixel(3.69)} height={window.innerHeight * 0.40425}/>
         </div>
       </div>
     )

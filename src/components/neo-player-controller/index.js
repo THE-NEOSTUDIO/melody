@@ -6,6 +6,7 @@ import './energetic-theme.scss';
 class NeoRhythmCanvas extends Component {
 
   instrumentIndex = 0;
+  start = false;
 
   // 更改乐器
   changeInstrument() {
@@ -20,15 +21,21 @@ class NeoRhythmCanvas extends Component {
 
   render() {
     const {theme, sound} = this.props.context;
+    const {player} = this.props;
     return (
       <div className="neo-player-controller">
         <div className={theme}>
           <div className="neo-player-controller border-all">
-            <div className="neo-start-or-pause-btn border-all">{/*开始暂停按钮*/}</div>
+            <div onClick={() => {
+              this.start ? player.stop() : player.play();
+              this.start = !this.start;
+            }} className="neo-start-or-pause-btn border-all">开始 / 暂停
+            </div>
             <div onClick={this.changeInstrument.bind(this)}
                  className="neo-instrument-selection-btn border-all">{sound}</div>
             <div className="neo-tempo-btn border-all">{/*选择节奏按钮*/}</div>
-            <div className="neo-restart-btn border-all">{/*重试按钮*/}</div>
+            <div onClick={() => this.props.context.setContext({reset: true})}
+                 className="neo-restart-btn border-all">{/*重试按钮*/}</div>
           </div>
         </div>
       </div>

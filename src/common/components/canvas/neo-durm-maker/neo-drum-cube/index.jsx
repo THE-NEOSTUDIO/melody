@@ -60,6 +60,7 @@ class NeoDrumCube extends Component {
 
   setActive(active) {
     const {row, column, active: previousActive} = this.state;
+    const {player} = this.props;
     // 声音播放
     if (active && !previousActive) {
       player.drumming(NeoDrumCube.calculateRhythm(row), column);
