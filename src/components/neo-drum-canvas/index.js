@@ -10,7 +10,7 @@ class NeoDrumCanvas extends Component {
     return (
       <div className="neo-drum-canvas">
         <div className={theme}>
-          <NeoDrumMaker editable={true} width={transformRemToPixel(3.69)} height={window.innerHeight * 0.1493} />
+          <NeoDrumMaker editable={true} width={transformRemToPixel(3.69)} height={window.innerHeight * 0.13475} />
         </div>
       </div>
     )
