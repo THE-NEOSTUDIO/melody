@@ -88,8 +88,10 @@ class NeoDrumCube extends Component {
         y={y}
         fill={NeoDrumCube.calculateRhythmColor(active, row)}
         onTouchStart={() => {
-          setActiveOnTouchStart(active);
-          this.setActive(!active);
+          let result = setActiveOnTouchStart(active);
+          if (!result) {
+            this.setActive(!active);
+          }
         }}
         onTouchMove={throttle(setActiveOnTouchMove.bind(null, row, column), 500)}
         onTouchEnd={() => setActiveOnTouchEnd()}

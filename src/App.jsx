@@ -40,6 +40,8 @@ export default class App extends PureComponent {
       // Sound相关
       sound: INSTRUMENTS[0], // 默认声音类型
       loading: false, // 是否正在加载
+      initialized: false,
+      error: false,
       reset: false, // 是否需要重置
       // TODO initialize状态
     }

@@ -10,7 +10,6 @@ import './App.scss';
 import './common/libraries/polyfill.js';
 import './common/libraries/rem.js';
 import './common/libraries/bounce-disabled';
-import './audio-preparation';
 
 import './common/components/audio/neo-player/index';
 

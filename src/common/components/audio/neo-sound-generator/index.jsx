@@ -130,7 +130,7 @@ class NeoSoundGenerator extends Component {
 
   componentDidMount() {
     this.init();
-    this.loadSoundAndGenerateSoundMap();
+    this.loadSoundAndGenerateSoundMap(true);
   }
 
   componentDidUpdate(prevProps) {
@@ -138,11 +138,10 @@ class NeoSoundGenerator extends Component {
     if (prevProps.context.sound === this.props.context.sound) {
       return null;
     }
-    // this.init();
     this.loadSoundAndGenerateSoundMap();
   }
 
-  loadSoundAndGenerateSoundMap() {
+  loadSoundAndGenerateSoundMap(mountingHook) {
     const {sound, loading, setContext} = this.props.context;
     if (loading) {
       return null;
@@ -155,12 +154,14 @@ class NeoSoundGenerator extends Component {
       NeoSoundGenerator.setDrumADSREnvelope();
 
       // set App Context
-      Promise.all([NeoSoundGenerator.generateRhythmSound(sound), NeoSoundGenerator.generateDrumSound()])
+      return Promise.all([NeoSoundGenerator.generateRhythmSound(sound), NeoSoundGenerator.generateDrumSound()])
         .then(() => {
           setContext({
             loading: false
           })
         })
+        .then(() => mountingHook ? setContext({initialized: true}) : null)
+        .catch(() => setContext({error: true}))
     });
   }
 

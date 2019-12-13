@@ -104,8 +104,10 @@ class NeoCube extends Component {
         y={y}
         fill={columnIndex !== column ? NeoCube.calculateRhythmColor(active, row) : NeoCube.calculateCurrentRhythmColor(active)}
         onTouchStart={() => {
-          setActiveOnTouchStart(active);
-          this.setActive(!active);
+          let result = setActiveOnTouchStart(active);
+          if (!result) {
+            this.setActive(!active);
+          }
         }}
         onTouchMove={throttle(setActiveOnTouchMove.bind(null, row, column), 500)}
         onTouchEnd={() => setActiveOnTouchEnd()}

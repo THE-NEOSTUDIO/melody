@@ -56,8 +56,8 @@ class NeoRhythmMaker extends PureComponent {
   }
 
   initializeCubeGroup() {
-    const {cubeWidth, cubeHeight, loading} = this.state;
-    const {columnIndex} = this.props.context;
+    const {cubeWidth, cubeHeight} = this.state;
+    const {columnIndex, loading, initialized} = this.props.context;
     let currentXCoordinate = 0;
     let currentYCoordinate = 0;
     const cubeGroup = [];
@@ -68,9 +68,9 @@ class NeoRhythmMaker extends PureComponent {
           columnIndex={columnIndex}
           player={this.props.player}
           ref={ref => this.setElementInRefList(ref, row, column)}
-          setActiveOnTouchStart={!loading ? this.setActiveOnTouchStart.bind(this) : null}
-          setActiveOnTouchMove={!loading ? this.setActiveOnTouchMove.bind(this) : null}
-          setActiveOnTouchEnd={!loading ? this.setActiveOnTouchEnd.bind(this) : null}
+          setActiveOnTouchStart={!loading && initialized ? this.setActiveOnTouchStart.bind(this) : () => ({loading:true})}
+          setActiveOnTouchMove={!loading && initialized ? this.setActiveOnTouchMove.bind(this) : () => {}}
+          setActiveOnTouchEnd={!loading && initialized ? this.setActiveOnTouchEnd.bind(this) : () => {}}
           row={row}
           column={column}
           key={`${currentYCoordinate}${currentXCoordinate}`}
