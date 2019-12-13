@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import player from "../../../audio/neo-player";
 import {Rect} from 'react-konva';
 import {
   DO_CUBE_COLOR,
