@@ -7,6 +7,7 @@
 import React, {PureComponent} from 'react';
 
 import {ENERGETIC} from "./common/constants/theme";
+import {INSTRUMENTS} from "./common/constants/instruments";
 import './App.scss';
 import Context from './common/context';
 
@@ -33,7 +34,7 @@ export default class App extends PureComponent {
       row: undefined,
       column: undefined,
       // Sound相关
-      sound: 'piano', // 默认声音类型
+      sound: INSTRUMENTS[0], // 默认声音类型
       loading: false, // 是否正在加载
       // TODO initialize状态
     }

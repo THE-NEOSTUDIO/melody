@@ -1,18 +1,35 @@
 import React, {Component} from 'react';
 import {connect} from "../../common/context";
+import {INSTRUMENTS} from "../../common/constants/instruments";
 import './energetic-theme.scss';
 
 class NeoRhythmCanvas extends Component {
+
+  instrumentIndex = 0;
+
+  // 更改乐器
+  changeInstrument() {
+    const {setContext} = this.props.context;
+    if (this.instrumentIndex >= INSTRUMENTS.length) {
+      this.instrumentIndex = 0;
+    }
+    setContext({
+      sound: INSTRUMENTS[this.instrumentIndex++]
+    })
+  }
+
   render() {
-    const {theme} = this.props.context;
+    const {theme, sound} = this.props.context;
     return (
       <div className="neo-player-controller">
         <div className={theme}>
-          <div onClick={() => {
-            this.props.context.setContext({
-              sound: 'wood'
-            })
-          }} className="neo-player-controller"></div>
+          <div className="neo-player-controller border-all">
+            <div className="neo-start-or-pause-btn border-all">{/*开始暂停按钮*/}</div>
+            <div onClick={this.changeInstrument.bind(this)}
+                 className="neo-instrument-selection-btn border-all">{sound}</div>
+            <div className="neo-tempo-btn border-all">{/*选择节奏按钮*/}</div>
+            <div className="neo-restart-btn border-all">{/*重试按钮*/}</div>
+          </div>
         </div>
       </div>
     )
