@@ -1,8 +1,9 @@
 import React, {PureComponent} from 'react';
 import {connect} from "../../../context";
-import {Stage, Layer, Line} from 'react-konva';
+import {Stage, Layer, Line,Rect} from 'react-konva';
 import {BOLD_LINE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
 import NeoDrumCube from "./neo-drum-cube";
+
 
 class NeoDrumMaker extends PureComponent {
 
@@ -79,6 +80,16 @@ class NeoDrumMaker extends PureComponent {
           x={currentXCoordinate}
           y={currentYCoordinate}
         />);
+        cubeGroup.push(<Rect
+          fill={'black'}
+          row={row}
+          column={column}
+          key={`${currentYCoordinate}${currentXCoordinate}drum`}
+          width={cubeWidth / 2}
+          height={cubeHeight / 2}
+          x={currentXCoordinate}
+          y={currentYCoordinate}
+        />)
         currentXCoordinate += cubeWidth;
       }
       currentYCoordinate += cubeHeight;
