@@ -5,6 +5,24 @@
   margin-top: 0.33%;
 }
 
+input[type=range]{
+  -webkit-appearance: none;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.range-cover [type=range] {
+  margin: -5px 0 0;
+  padding: 0;
+  width: calc(100% + 32px);
+  height: 60px;
+  position: absolute;
+  left: -16px;
+  opacity: 0;
+  top: -12px;
+  cursor: pointer;
+}
+
 .neo-player-controller > .energetic {
   width: 100%;
   height: 100%;
@@ -21,6 +39,61 @@
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+
+    & .neo-tempo-btn {
+      position: relative;
+      background: url("../../common/assets/energetic/player-controller/tempo-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+
+      & .tempo-container {
+        position: absolute;
+        background-color: royalblue;
+        height: 2rem;
+        width: .5rem;
+        left: .2325rem;
+        top: -2rem;
+      }
+    }
+
+    & .neo-btn-start {
+      background: url("../../common/assets/energetic/player-controller/pause-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-btn-pause {
+      background: url("../../common/assets/energetic/player-controller/start-icon.png") rgba(255,255,255,.2)  no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-instrument-selection-btn-marimba {
+      background: url("../../common/assets/energetic/player-controller/marimba-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-instrument-selection-btn-piano {
+      background: url("../../common/assets/energetic/player-controller/piano-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-instrument-selection-btn-wood {
+      background: url("../../common/assets/energetic/player-controller/wood-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-instrument-selection-btn-string {
+      background: url("../../common/assets/energetic/player-controller/string-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-instrument-selection-btn-synthesizer {
+      background: url("../../common/assets/energetic/player-controller/synthesizer-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
+    }
+
+    & .neo-restart-btn {
+      background: url("../../common/assets/energetic/player-controller/restart-icon.png") no-repeat center;
+      background-size: .27rem .27rem;
     }
   }
 }
