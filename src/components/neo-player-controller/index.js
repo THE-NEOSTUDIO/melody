@@ -47,12 +47,16 @@ class NeoRhythmCanvas extends Component {
       <div className="neo-player-controller">
         <div className={theme}>
           <div className="neo-player-controller border-all">
-            <div onClick={() => this.play()} className={`neo-btn-${start ? 'start': 'pause'} border-all`}>{/*开始暂停*/}</div>
+            <div onClick={() => this.play()}
+                 className={`neo-btn-${start ? 'start' : 'pause'} border-all`}>{/*开始暂停*/}</div>
             <div onClick={this.changeInstrument.bind(this)}
                  className={`neo-instrument-selection-btn-${sound} border-all`}>{/*乐器选择*/}</div>
             <div className="neo-tempo-btn border-all">
               <div className="tempo-container">
+                <div className="tempo-range">
 
+                </div>
+                <div className="inside-tempo">{/*{/*节奏选择*/}</div>
               </div>
             </div>
             <div onClick={() => this.resetAll()} className="neo-restart-btn border-all">{/*重试按钮*/}</div>
