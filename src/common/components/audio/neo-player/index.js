@@ -10,19 +10,26 @@ class NeoPlayer extends Component {
     Tone.Transport.bpm.value = 200;
     super(props);
     this.index = 0;
+    let drumControlled = false;
     this.rhythmNotePad = [[], [], [], [], [], [], [], []]; // 乐句
     this.drumNotePad = [[], [], [], [], [], [], [], []]; // 鼓点
     this.rhythm = new Tone.Part((time, chord) => {
+      if (this.rhythmNotePad.find(part => part.length > 0)) {
+        drumControlled = false;
+      }
       !props.loading && window.sampler.triggerAttackRelease(chord, window.sampler.duration).toMaster();
-      this.setIndex();
+      !drumControlled && this.setIndex();
     }).start(0);
     this.rhythm.loop = true;
     this.rhythm.loopEnd = "2m";
     this.rhythm.humanize = true;
     this.drum = new Tone.Part((time, chord) => {
       // 声音部分为空，则键盘弹奏
-      if (!this.rhythmNotePad.filter(chord => chord !== [])) {
+      if (!this.rhythmNotePad.find(part => part.length > 0)) {
+        drumControlled = true;
         this.setIndex();
+      } else {
+        drumControlled = false;
       }
       !props.loading && window.drum.triggerAttackRelease(chord, window.drum.duration).toMaster();
     }).start(0);
@@ -97,12 +104,28 @@ class NeoPlayer extends Component {
 
   // 开始
   play() {
+    if (
+      !this.rhythmNotePad.find(part => part.length > 0)
+      && !this.drumNotePad.find(part => part.length > 0)
+    ) {
+      return null;
+    }
     Tone.Transport.start();
   }
 
   // 终止
   stop() {
     Tone.Transport.stop();
+    this.props.setColumnIndex && this.props.setColumnIndex(undefined);
+    this.index = 0;
+  }
+
+  reset() {
+    Tone.Transport.stop();
+    this.drum.removeAll();
+    this.rhythm.removeAll();
+    this.drumNotePad = [[], [], [], [], [], [], [], []];
+    this.rhythmNotePad = [[], [], [], [], [], [], [], []];
     this.props.setColumnIndex && this.props.setColumnIndex(undefined);
     this.index = 0;
   }

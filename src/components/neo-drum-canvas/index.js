@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "../../common/context";
-import NeoDrumMaker from "../../common/components/canvas/neo-durm-maker";
+import NeoDrumMaker from "../../common/components/canvas/neo-drum-maker-hooks";
 import './energetic-theme.scss';
 import {transformRemToPixel} from "../../common/utils";
 

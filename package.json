@@ -16,7 +16,8 @@
     "react-dom": "^16.12.0",
     "react-konva": "^16.10.1-0",
     "react-scripts": "3.3.0",
-    "tone": "^13.8.32"
+    "tone": "^13.8.32",
+    "use-image": "^1.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

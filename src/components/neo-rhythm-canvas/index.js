@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "../../common/context";
 import './energetic-theme.scss';
-import NeoRhythmMaker from "../../common/components/canvas/neo-rhythm-maker";
+import NeoRhythmMaker from "../../common/components/canvas/neo-rhythm-maker-hooks";
 import {transformRemToPixel} from "../../common/utils";
 
 

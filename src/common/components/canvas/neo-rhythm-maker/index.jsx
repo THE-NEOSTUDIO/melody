@@ -4,6 +4,7 @@ import {Stage, Layer, Line} from 'react-konva';
 import {BOLD_LINE_COLOR, LIGHT_LINE_COLOR} from "../../../constants/color";
 import NeoCube from "./neo-cube";
 
+// TODO 如果有时间 用hooks重构
 class NeoRhythmMaker extends PureComponent {
 
   refList = [
@@ -25,15 +26,48 @@ class NeoRhythmMaker extends PureComponent {
     super(props);
     const {width, height} = props;
     this.state = {
-      initialized: width && height, // 既有宽 又有高 则为加载成功
       width,
       height,
       cubeWidth: width / 8, // 每一格的宽度
       cubeHeight: height / 6, // 每一格的高度
+      timeline: [],
     }
   }
 
   componentDidUpdate(prevProps) {
+    // if (this.props.context.columnIndex !== prevProps.context.columnIndex) {
+    //   const {cubeWidth, cubeHeight} = this.state;
+    //   const {columnIndex, loading, initialized} = this.props.context;
+    //   let list = [];
+    //   if (columnIndex === undefined) {
+    //     this.setState({
+    //       timeline: []
+    //     })
+    //   } else {
+    //     for (let row = 0; row < 6; row++) {
+    //       list.push(
+    //         <NeoCube
+    //           setActiveOnTouchStart={!loading && initialized ? this.setActiveOnTouchStart.bind(this) : () => ({loading: true})}
+    //           setActiveOnTouchMove={!loading && initialized ? this.setActiveOnTouchMove.bind(this) : () => {
+    //           }}
+    //           setActiveOnTouchEnd={!loading && initialized ? this.setActiveOnTouchEnd.bind(this) : () => {
+    //           }}
+    //           row={row}
+    //           fill={'rgba(251,73, 99, 0.22)'}
+    //           key={`${columnIndex}${row}drum-timeline`}
+    //           column={columnIndex}
+    //           width={cubeWidth}
+    //           height={cubeHeight}
+    //           x={cubeWidth * columnIndex}
+    //           y={row * cubeHeight}
+    //         />
+    //       )
+    //     }
+    //     this.setState({
+    //       timeline: list
+    //     })
+    //   }
+    // }
     if (this.props.context.reset && !prevProps.context.reset) {
       this.reset();
     }
@@ -68,9 +102,11 @@ class NeoRhythmMaker extends PureComponent {
           columnIndex={columnIndex}
           player={this.props.player}
           ref={ref => this.setElementInRefList(ref, row, column)}
-          setActiveOnTouchStart={!loading && initialized ? this.setActiveOnTouchStart.bind(this) : () => ({loading:true})}
-          setActiveOnTouchMove={!loading && initialized ? this.setActiveOnTouchMove.bind(this) : () => {}}
-          setActiveOnTouchEnd={!loading && initialized ? this.setActiveOnTouchEnd.bind(this) : () => {}}
+          setActiveOnTouchStart={!loading && initialized ? this.setActiveOnTouchStart.bind(this) : () => ({loading: true})}
+          setActiveOnTouchMove={!loading && initialized ? this.setActiveOnTouchMove.bind(this) : () => {
+          }}
+          setActiveOnTouchEnd={!loading && initialized ? this.setActiveOnTouchEnd.bind(this) : () => {
+          }}
           row={row}
           column={column}
           key={`${currentYCoordinate}${currentXCoordinate}`}
@@ -123,15 +159,8 @@ class NeoRhythmMaker extends PureComponent {
   }
 
   render() {
-    const {initialized, width, height} = this.state;
+    const { width, height} = this.state;
     // TODO 错误处理
-    if (!initialized) {
-      return (
-        <div>
-          Error!~
-        </div>
-      )
-    }
 
     return (
       <Stage width={width} height={height}>
@@ -141,6 +170,9 @@ class NeoRhythmMaker extends PureComponent {
           }
           {
             this.initializeLineGroup()
+          }
+          {
+            [...this.state.timeline]
           }
         </Layer>
       </Stage>

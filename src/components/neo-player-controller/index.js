@@ -34,7 +34,11 @@ class NeoRhythmCanvas extends Component {
             <div onClick={this.changeInstrument.bind(this)}
                  className="neo-instrument-selection-btn border-all">{sound}</div>
             <div className="neo-tempo-btn border-all">{/*选择节奏按钮*/}</div>
-            <div onClick={() => this.props.context.setContext({reset: true})}
+            <div onClick={() => {
+              this.props.context.setContext({reset: true});
+              this.start = false;
+            }
+            }
                  className="neo-restart-btn border-all">{/*重试按钮*/}</div>
           </div>
         </div>

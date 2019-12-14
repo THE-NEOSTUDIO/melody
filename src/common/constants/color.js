@@ -14,3 +14,5 @@ export const RE_CUBE_COLOR = '#f8df72';
 export const MI_CUBE_COLOR = '#b2e6a4';
 export const SO_CUBE_COLOR = '#a3cae8';
 export const LA_CUBE_COLOR = '#e4b3d3';
+
+export const TIMELINE_COLOR = 'rgba(251,73, 99, 0.22)';
