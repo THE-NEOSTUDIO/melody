@@ -47,6 +47,7 @@ export default class App extends PureComponent {
     }
   }
 
+  // 播放作品时 当前播放的行数
   setColumnIndex(index) {
     this.setState({
       columnIndex: index

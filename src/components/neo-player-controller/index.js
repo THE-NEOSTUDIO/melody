@@ -1,18 +1,29 @@
 import React, {Component} from 'react';
 import {connect} from "../../common/context";
 import {INSTRUMENTS} from "../../common/constants/instruments";
+import VerticalSlider from "./range";
 import './energetic-theme.scss';
 
 class NeoRhythmCanvas extends Component {
 
   instrumentIndex = 0;
-  showTempo = true;
 
   state = {
-    start: false
+    start: false,
+    showTempo: false,
+    tempoAnimationClassName: '',
   };
 
   // TODO 播放的状态不是很统一……
+  // TODO 时间允许的话引入css-animation库控制动画
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.showTempo !== this.state.showTempo) {
+      this.setState({
+        tempoAnimationClassName: this.state.showTempo ? '-show' : '-hide'
+      })
+    }
+  }
 
   // 更改乐器
   changeInstrument() {
@@ -32,6 +43,12 @@ class NeoRhythmCanvas extends Component {
 
   play() {
     const {player} = this.props;
+    if (
+      !player.rhythmNotePad.find(part => part.length > 0)
+      && !player.drumNotePad.find(part => part.length > 0)
+    ) {
+      return null;
+    }
     this.state.start ? player.stop() : player.play();
     this.setState(({start}) => {
       return {
@@ -41,8 +58,9 @@ class NeoRhythmCanvas extends Component {
   }
 
   render() {
+    const {player} = this.props;
     const {theme, sound} = this.props.context;
-    const {start} = this.state;
+    const {start, showTempo, tempoAnimationClassName} = this.state;
     return (
       <div className="neo-player-controller">
         <div className={theme}>
@@ -51,10 +69,13 @@ class NeoRhythmCanvas extends Component {
                  className={`neo-btn-${start ? 'start' : 'pause'} border-all`}>{/*开始暂停*/}</div>
             <div onClick={this.changeInstrument.bind(this)}
                  className={`neo-instrument-selection-btn-${sound} border-all`}>{/*乐器选择*/}</div>
-            <div className="neo-tempo-btn border-all">
-              <div className="tempo-container">
+            <div
+              onClick={() => this.setState({showTempo: !showTempo})}
+              className="neo-tempo-btn border-all">
+              <div
+                className={`tempo-container${tempoAnimationClassName}`}>
                 <div className="tempo-range">
-
+                  <VerticalSlider player={player}/>
                 </div>
                 <div className="inside-tempo">{/*{/*节奏选择*/}</div>
               </div>
