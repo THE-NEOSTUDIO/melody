@@ -29,6 +29,42 @@
       background-size: .2rem .24rem;
 
       & .tempo-container {
+        visibility: hidden;
+      }
+
+      .tempo-container-show {
+        animation: show .2s ease-in forwards;
+        position: absolute;
+        background-color: #fb4963;
+        border-radius: .06rem;
+        border: solid .02rem #ffffff;
+        height: 1.64rem;
+        width: .31rem;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: .05rem;
+        visibility: visible;
+
+        & .tempo-range {
+          height: 1.2rem;
+          width: .27rem;
+          position: relative;
+          display: flex;
+          justify-content: center;
+        }
+
+        & .inside-tempo {
+          width: .27rem;
+          height: .31rem;
+          position: absolute;
+          bottom: 0.046rem;
+          background: url("../../common/assets/energetic/player-controller/tempo-icon.png") no-repeat center;
+          background-size: .2rem .24rem;
+        }
+      }
+
+      .tempo-container-hide {
+        animation: hide .2s ease-out forwards;
         position: absolute;
         background-color: #fb4963;
         border-radius: .06rem;
@@ -43,13 +79,15 @@
           height: 1.2rem;
           width: .27rem;
           position: relative;
+          display: flex;
+          justify-content: center;
         }
 
         & .inside-tempo {
           width: .27rem;
           height: .31rem;
           position: absolute;
-          bottom: 0.075rem;
+          bottom: 0.046rem;
           background: url("../../common/assets/energetic/player-controller/tempo-icon.png") no-repeat center;
           background-size: .2rem .24rem;
         }
@@ -58,12 +96,12 @@
 
     & .neo-btn-start {
       background: url("../../common/assets/energetic/player-controller/pause-icon.png") no-repeat center;
-      background-size: .27rem .27rem;
+      background-size: .2rem .2rem;
     }
 
     & .neo-btn-pause {
-      background: url("../../common/assets/energetic/player-controller/start-icon.png") rgba(255,255,255,.2)  no-repeat center;
-      background-size: .27rem .27rem;
+      background: url("../../common/assets/energetic/player-controller/start-icon.png") rgba(255, 255, 255, .2) no-repeat center;
+      background-size: .2rem .24rem;
     }
 
     & .neo-instrument-selection-btn-marimba {
@@ -95,5 +133,24 @@
       background: url("../../common/assets/energetic/player-controller/restart-icon.png") no-repeat center;
       background-size: .27rem .27rem;
     }
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }

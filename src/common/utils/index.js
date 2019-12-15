@@ -90,3 +90,25 @@ export const checkCanvasCompatibility = () =>
 
 export const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 export const isAndroid = /Android/.test(navigator.userAgent) && !window.MSStream;
+
+/**
+ * 获取url query参数
+ * @param {string} url 需要解析的地址
+ * @returns {Object}  返回参数Object
+ */
+export const parseUrl = url => {
+  let str = url || (window.location && window.location.href) || '';
+  // drop hash
+  str = str.split('#')[0];
+  let search = str.split('?')[1] || '';
+  let result = {};
+  if (search) {
+    let sArr = search.split('&');
+    for (let i = 0; i < sArr.length; i++) {
+      let temp = sArr[i].split('=');
+      let key = temp[0];
+      result[key] = decodeURIComponent(temp[1]);
+    }
+  }
+  return result;
+};

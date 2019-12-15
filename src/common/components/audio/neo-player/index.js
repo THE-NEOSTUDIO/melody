@@ -11,6 +11,7 @@ class NeoPlayer extends Component {
     super(props);
     this.index = 0;
     let drumControlled = false;
+    this.bpm = 200;
     this.rhythmNotePad = [[], [], [], [], [], [], [], []]; // 乐句
     this.drumNotePad = [[], [], [], [], [], [], [], []]; // 鼓点
     this.rhythm = new Tone.Part((time, chord) => {
