@@ -5,80 +5,62 @@
  * @Last Modified time: 2019-12-09 00:08
  */
 import React, {PureComponent} from 'react';
+import {parseUrl} from "./common/utils";
+import MainPage from './pages/MainPage/index';
+import RefluenceMainPage from './pages/RefluenceMainPage/index';
+import RefluencePlayer from './pages/RefluencePlayer/index';
+import Maker from './pages/Maker/index';
+import Share from './pages/Share/index';
 
-import {ENERGETIC} from "./common/constants/theme";
-import {INSTRUMENTS} from "./common/constants/instruments";
-import './App.scss';
-import Context from './common/context';
-
-import NeoHeader from './components/neo-header';
-import NeoRhythmSection from './components/neo-rhythm-section';
-import NeoRhythmCanvas from './components/neo-rhythm-canvas';
-import NeoDrumSection from './components/neo-drum-section';
-import NeoDrumCanvas from './components/neo-drum-canvas';
-import NeoPlayerController from './components/neo-player-controller';
-import NeoFooter from './components/neo-footer';
-import NeoSoundGenerator from "./common/components/audio/neo-sound-generator";
-import NeoPlayer from "./common/components/audio/neo-player";
-
+const queries = parseUrl();
 
 export default class App extends PureComponent {
 
-  player = undefined;
+  state = {
+    step: 0, // step:0 首页
+    refluence: queries && queries.refluence === '1' // 是否回流
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      setContext: this.setState.bind(this),
-      theme: ENERGETIC,
-      konvaDebug: false,
-      // 滑动点亮盒子相关
-      active: false,
-      row: undefined,
-      column: undefined,
-      columnIndex: undefined,
-      // Sound相关
-      sound: INSTRUMENTS[0], // 默认声音类型
-      loading: false, // 是否正在加载
-      initialized: false,
-      error: false,
-      reset: false, // 是否需要重置
-      // TODO initialize状态
+  setStep(step) {
+    this.setState({step});
+  }
+
+  componentDidUpdate() {
+    this.renderPage();
+  }
+
+  renderPage(step, refluence) {
+    if (!refluence) {
+      switch (step) {
+        case 0:
+          return <MainPage setStep={this.setStep.bind(this)}/>;
+        case 1:
+          return <Maker setStep={this.setStep.bind(this)}/>;
+        case 2:
+          return <Share setStep={this.setStep.bind(this)}/>;
+      }
+    } else {
+      switch (step) {
+        case 0:
+          return <RefluenceMainPage setStep={this.setStep.bind(this)}/>;
+        case 1:
+          return <RefluencePlayer setStep={this.setStep.bind(this)}/>;
+        case 3:
+          return <Maker setStep={this.setStep.bind(this)}/>;
+        case 4:
+          return <Share setStep={this.setStep.bind(this)}/>
+      }
     }
   }
 
-  // 播放作品时 当前播放的行数
-  setColumnIndex(index) {
-    this.setState({
-      columnIndex: index
-    })
-  }
-
   render() {
-    const {theme, loading} = this.state;
+    const {step, refluence} = this.state;
     return (
-      <Context.Provider value={this.state}>
+      <div>
         {
-          <div className={`neo neo-${theme}`}>
-            <NeoHeader/>
-            <NeoRhythmSection/>
-            <NeoRhythmCanvas player={this.player}/>
-            <NeoDrumSection/>
-            <NeoDrumCanvas player={this.player}/>
-            <NeoPlayerController player={this.player}/>
-            <NeoFooter/>
-            <NeoSoundGenerator/>
-            <NeoPlayer
-              ref={player => {
-                this.player = player;
-                window.player = player;
-              }}
-              loading={loading}
-              setColumnIndex={this.setColumnIndex.bind(this)}
-            />
-          </div>
+          this.renderPage(step, refluence)
         }
-      </Context.Provider>
+      </div>
     )
   }
 }
