@@ -56,7 +56,7 @@ export default class App extends PureComponent {
   render() {
     const {step, refluence} = this.state;
     return (
-      <div>
+      <div className="bounce-disabled-container">
         {
           this.renderPage(step, refluence)
         }

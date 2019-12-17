@@ -28,15 +28,17 @@ class NeoRhythmCanvas extends Component {
   // 更改乐器
   changeInstrument() {
     const {setContext} = this.props.context;
+    this.instrumentIndex++;
     if (this.instrumentIndex >= INSTRUMENTS.length) {
       this.instrumentIndex = 0;
     }
     setContext({
-      sound: INSTRUMENTS[this.instrumentIndex++]
+      sound: INSTRUMENTS[this.instrumentIndex]
     })
   }
 
   resetAll() {
+    console.log(1);
     this.props.context.setContext({reset: true});
     this.setState({start: false})
   }
