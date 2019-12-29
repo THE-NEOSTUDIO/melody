@@ -15,8 +15,8 @@ export const PREFIX =
     : '/';
 
 export const GET_RHYTHM_API_LIST = type => {
-  if (!{}.propertyIsEnumerable.call(SOUND_MAP, type) && type !== 'drum') {
-    return [PREFIX];
+  if (!{}.propertyIsEnumerable.call(SOUND_MAP, type) || type === 'drum') {
+    return [];
   } else {
     return [
       `${PREFIX}sounds/${SOUND_MAP[type]}/C3.mp3`,

@@ -43,7 +43,15 @@ export default class Index extends PureComponent {
       initialized: false,
       error: false,
       reset: false, // 是否需要重置
-      // TODO initialize状态
+      teaching: true, // 是否需要教学
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {initialized: prevInitialized} = prevState;
+    const {initialized} = this.state;
+    if (prevInitialized !== initialized) {
+      this.props.setLoading && this.props.setLoading(!initialized);
     }
   }
 
@@ -55,7 +63,7 @@ export default class Index extends PureComponent {
   }
 
   render() {
-    const {theme, loading} = this.state;
+    const {theme, loading, teaching} = this.state;
     return (
       <Context.Provider value={this.state}>
         {
@@ -76,6 +84,11 @@ export default class Index extends PureComponent {
               loading={loading}
               setColumnIndex={this.setColumnIndex.bind(this)}
             />
+            {
+              teaching
+                ? (<div onClick={()=>this.setState({teaching: false})} className="teaching">{/*教学视频*/}</div>)
+                : null
+            }
           </div>
         }
       </Context.Provider>
