@@ -21,7 +21,7 @@ class NeoHeader extends Component {
           {/*ENERGETIC THEME*/}
           <div className="neo-footer-left-element">{/*左侧元素*/}</div>
           <div className="neo-footer-main-element">
-            <div className="title">{/*保存*/}</div>
+            <div onClick={()=>this.props.setStep(2)} className="title">{/*保存*/}</div>
             <div className="subtitle">{/*Save*/}</div>
           </div>
           <div className="neo-footer-right-element">{/*右侧元素*/}</div>

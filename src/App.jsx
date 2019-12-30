@@ -27,6 +27,7 @@ export default class App extends PureComponent {
     step: 0, // step:0 首页
     refluence: queries && queries.refluence === '1', // 是否回流
     loading: true,
+    loadingAnimation: false,
   };
 
   // 预先加载所有资源
@@ -42,15 +43,28 @@ export default class App extends PureComponent {
   componentDidMount() {
     // 第一次进入必loading
     this.setLoading(true);
-    this.initAPIs().then(()=>{
-      setTimeout(()=>{
-        this.setLoading(false);
-      },750)
-    }).catch(e=>{
+    this.initAPIs().then(() => {
+      setTimeout(() => {
+        this.setAnimation();
+        setTimeout(() => {
+          this.setLoading(false);
+          this.setState({loadingAnimation: false})
+        }, 400);
+      }, 1500);
+    }).catch(e => {
       // TODO error handle
       console.log(e);
-      this.setLoading(false);
+      // 动画时长
+      this.setAnimation();
+      setTimeout(() => {
+        this.setLoading(false);
+        this.setState({loadingAnimation: false})
+      }, 400);
     });
+  }
+
+  setAnimation() {
+    this.setState({loadingAnimation: true})
   }
 
   // 设置步骤
@@ -100,9 +114,10 @@ export default class App extends PureComponent {
   }
 
   render() {
-    const {step, refluence, loading} = this.state;
+    const {step, refluence, loading, loadingAnimation} = this.state;
     return (
-      <div className={`bounce-disabled-container bounce-disabled-container-${loading ? 'loading' : ''}`}>
+      <div
+        className={`bounce-disabled-container bounce-disabled-container-${loading ? 'loading' : ''} loading-${loadingAnimation ? 'animated' : 'null'}`}>
         {
           this.renderPage(step, refluence)
         }

@@ -13,3 +13,25 @@ body {
   background: rgba(17,19,67,.8);
   z-index: 10000000;
 }
+
+.loading-animated::before {
+  animation: linear .4s hide-loading;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17,19,67,.8);
+  z-index: 10000000;
+}
+
+@keyframes hide-loading {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

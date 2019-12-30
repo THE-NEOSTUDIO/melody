@@ -18,8 +18,11 @@ import NeoDrumSection from '../../components/neo-drum-section';
 import NeoDrumCanvas from '../../components/neo-drum-canvas';
 import NeoPlayerController from '../../components/neo-player-controller';
 import NeoFooter from '../../components/neo-footer';
+
 import NeoSoundGenerator from "../../common/components/audio/neo-sound-generator";
 import NeoPlayer from "../../common/components/audio/neo-player";
+
+import Teaching from '../../components/teaching';
 
 
 export default class Index extends PureComponent {
@@ -74,7 +77,7 @@ export default class Index extends PureComponent {
             <NeoDrumSection/>
             <NeoDrumCanvas player={this.player}/>
             <NeoPlayerController player={this.player}/>
-            <NeoFooter/>
+            <NeoFooter setStep={this.props.setStep}/>
             <NeoSoundGenerator/>
             <NeoPlayer
               ref={player => {
@@ -86,7 +89,7 @@ export default class Index extends PureComponent {
             />
             {
               teaching
-                ? (<div onClick={()=>this.setState({teaching: false})} className="teaching">{/*教学视频*/}</div>)
+                ? (<Teaching closeTeaching={()=>this.setState({teaching: false})} />)
                 : null
             }
           </div>

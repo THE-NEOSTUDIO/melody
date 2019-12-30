@@ -1,0 +1,132 @@
+.teaching {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 19, 67, .8);
+  z-index: 10000000;
+}
+
+.teaching-animated {
+  animation: hide .4s linear;
+}
+
+.teaching > .teaching-first-step {
+
+  animation: blink 2s cubic-bezier(.4, .3, .8, .2) infinite;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  writing-mode: vertical-lr;
+
+  .rhythm-block {
+    width: 3.5rem;
+    margin-top: 24.3%;
+    height: 38.3%;
+    border: solid 5px white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 1.68rem;
+      height: 1.54rem;
+      background: url("../../common/assets/energetic/teaching/rhythm.png") center no-repeat;
+      background-size: contain;
+    }
+  }
+
+  .drum-block {
+    width: 3.5rem;
+    margin-top: 7.7%;
+    height: 11.7%;
+    border: solid 5px white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 1.68rem;
+      height: .24rem;
+      background: url("../../common/assets/energetic/teaching/drum.png") center no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.teaching > .teaching-second-step {
+
+  animation: blink 2s cubic-bezier(.4, .3, .8, .2) infinite;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: center;
+  writing-mode: vertical-lr;
+
+  .guide-block {
+    width: 3.75rem;
+    margin-top: 70%;
+    height: 11.7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../common/assets/energetic/teaching/guide.png") center no-repeat;
+    background-size: 3.44rem .69rem;
+  }
+
+  .controller-block {
+    width: 3.75rem;
+    margin-top: .5%;
+    height: 9%;
+    border: solid 5px white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      content: '';
+      display: block;
+      width: 3.02rem;
+      height: .37rem;
+      background: url("../../common/assets/energetic/teaching/item.png") center no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
