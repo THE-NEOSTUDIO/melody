@@ -40,7 +40,7 @@ class NeoSoundGenerator extends Component {
   }
 
   static setDrumADSREnvelope() {
-    window.sampler.volume.value = -5;
+    window.drum.volume.value = -5;
   }
 
   /* 将Buffer保存至采样机 */

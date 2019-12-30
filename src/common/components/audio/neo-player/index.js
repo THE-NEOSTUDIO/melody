@@ -37,6 +37,9 @@ class NeoPlayer extends Component {
     this.drum.loop = true;
     this.drum.loopEnd = "2m";
     this.drum.humanize = true;
+
+    // save
+    this.results = undefined;
   }
 
   /* tap a note */
@@ -101,6 +104,7 @@ class NeoPlayer extends Component {
 
   setBPM(value) {
     Tone.Transport.bpm.value = 2 * value;
+    this.bpm = 2 * value;
   }
 
   // 开始

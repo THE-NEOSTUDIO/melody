@@ -6,10 +6,10 @@ export default function ({setStep}) {
   const [animation, setAnimation] = useState(false);
 
   const go = () => {
-    setAnimation(true);
-    setTimeout(() => {
+    // setAnimation(true);
+    // setTimeout(() => {
       setStep(1);
-    }, 400);
+    // }, 400);
   };
 
   return (

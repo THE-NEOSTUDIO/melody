@@ -10,6 +10,7 @@ import MainPage from './pages/MainPage/index';
 import RefluenceMainPage from './pages/RefluenceMainPage/index';
 import RefluencePlayer from './pages/RefluencePlayer/index';
 import Maker from './pages/Maker/index';
+import TextEditor from './pages/TextEditor/index';
 import Share from './pages/Share/index';
 import './App.scss';
 
@@ -97,6 +98,8 @@ export default class App extends PureComponent {
         case 1:
           return <Maker setLoading={this.setLoading.bind(this)} setStep={this.setStep.bind(this)}/>;
         case 2:
+          return <TextEditor setStep={this.setStep.bind(this)}/>;
+        case 3:
           return <Share setStep={this.setStep.bind(this)}/>;
       }
     } else {
@@ -108,6 +111,8 @@ export default class App extends PureComponent {
         case 2:
           return <Maker setLoading={this.setLoading.bind(this)} setStep={this.setStep.bind(this)}/>;
         case 3:
+          return <TextEditor setStep={this.setStep.bind(this)}/>;
+        case 4:
           return <Share setStep={this.setStep.bind(this)}/>
       }
     }
