@@ -118,6 +118,7 @@ export default class App extends PureComponent {
     return (
       <div
         className={`bounce-disabled-container bounce-disabled-container-${loading ? 'loading' : ''} loading-${loadingAnimation ? 'animated' : 'null'}`}>
+        <div className="loading-item">{/*loading spinning*/}</div>
         {
           this.renderPage(step, refluence)
         }

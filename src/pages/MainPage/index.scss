@@ -189,6 +189,19 @@
   }
 }
 
+.main-page-animated > .card-container {
+
+}
+
+.main-page-animated {
+  background: #171967;
+  animation: linear .7s transColor;
+}
+
+.main-page-animated div {
+  animation: linear .7s hide-all;
+}
+
 @keyframes spinning {
   0% {
     transform: rotate(0) scale(1);
@@ -201,5 +214,23 @@
   }
   100% {
     transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes transColor {
+  from {
+    background-color: rgba(17, 19, 67, 1);
+  }
+  to {
+    background-color: rgba(17, 19, 67, .8);
+  }
+}
+
+@keyframes hide-all {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

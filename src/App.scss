@@ -2,7 +2,7 @@ body {
   overflow: hidden;
 }
 
-.bounce-disabled-container-loading::before {
+.bounce-disabled-container-loading .loading-item {
   content: '';
   display: block;
   position: absolute;
@@ -14,7 +14,7 @@ body {
   z-index: 10000000;
 }
 
-.loading-animated::before {
+.loading-animated .loading-item {
   animation: linear .4s hide-loading;
   content: '';
   display: block;
