@@ -1,32 +1,19 @@
 import React, {useState} from "react";
-import QRCode from 'qrcode.react';
 
 // let startTime = undefined;
 // let endTime = undefined;
 
 export default function () {
 
+  const sentence = window.sentence_results;
+  const sound = window.sound_results;
 
+  // TODO 容错 （没有音乐或祝福的情况下有一个默认值避免回流无声音无祝福）
+  const url = `${window.location.href}?context=${encodeURIComponent(sound)}&refluence=1&wish=${encodeURIComponent(sentence)}`;
 
   return (
     <div>
-      <QRCode
-        value={`${window.location.href}?context=${encodeURIComponent(JSON.stringify(window.sound_results))}&refluence=1`}  //value参数为生成二维码的链接
-        size={200} //二维码的宽高尺寸
-        fgColor="#000000"  //二维码的颜色
-      />
-      {/*<img*/}
-      {/*  onTouchStart={()=>startTime = new Date().valueOf()}*/}
-      {/*  onTouchEnd={()=> {*/}
-      {/*    endTime = new Date().valueOf();*/}
-      {/*    if (endTime - startTime > 500) {*/}
-      {/*      setFollow(true);*/}
-      {/*    }*/}
-      {/*  }}*/}
-      {/*  src="./test.jpeg" width="300" alt=""/>*/}
-      {/*{*/}
-      {/*  follow ? <div>关注！！！！！</div> : null*/}
-      {/*}*/}
+
     </div>
   )
 }

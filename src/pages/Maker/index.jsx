@@ -77,7 +77,7 @@ export default class Index extends PureComponent {
             <NeoDrumSection/>
             <NeoDrumCanvas player={this.player}/>
             <NeoPlayerController player={this.player}/>
-            <NeoFooter setStep={this.props.setStep}/>
+            <NeoFooter player={this.player} setStep={this.props.setStep}/>
             <NeoSoundGenerator/>
             <NeoPlayer
               ref={player => {

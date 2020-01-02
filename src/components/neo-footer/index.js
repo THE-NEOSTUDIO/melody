@@ -12,13 +12,19 @@ import './energetic-theme.scss';
 class NeoHeader extends Component {
 
   stopAndSave() {
-    const map = JSON.stringify({
+    const {player} = this.props;
+    if (
+      !player.rhythmNotePad.find(part => part.length > 0)
+      && !player.drumNotePad.find(part => part.length > 0)
+    ) {
+      return null;
+    }
+    window.sound_results = JSON.stringify({
       bpm: window.player.bpm,
       rhythmNotes: window.player.rhythmNotePad,
       drumNotes: window.player.drumNotePad,
       soundType: this.props.context.sound
     });
-    window.sound_results = map;
     this.props.setStep(2);
   }
 

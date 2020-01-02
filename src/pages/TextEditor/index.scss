@@ -1,0 +1,208 @@
+.text-editor {
+  position: absolute;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: .08rem;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .card-container {
+    width: 100%;
+    height: 100%;
+    padding: 1.4% 0;
+    background: #171967;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .title-container {
+
+      width: 3.59rem;
+      height: 1.32rem;
+
+      & .title {
+        width: 3.59rem;
+        height: .49rem;
+        background: url("../../common/assets/energetic/text-editor/title.png") no-repeat center;
+        background-size: 100% 100%;
+      }
+
+      & .subtitle {
+        position: relative;
+        height: .82rem;
+        width: 3.75rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: center;
+        align-items: center;
+        background: url("../../common/assets/energetic/text-editor/subtitle.png") no-repeat top center;
+        background-size: 2.6rem;
+
+        &::before, &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          height: .82rem;
+          width: .27rem;
+          background: url("../../common/assets/energetic/text-editor/subtitle-decoration.png") no-repeat center;
+          background-size: contain;
+        }
+
+        .tip {
+
+          height: .82rem;
+          width: 2.52rem;
+          background: url("../../common/assets/energetic/text-editor/tip.png") no-repeat bottom center;
+          background-size: contain;
+        }
+
+        &::before {
+          left: .17rem;
+          top: 0;
+        }
+
+        &::after {
+          right: .17rem;
+          top: 0;
+        }
+      }
+    }
+
+    & .main-container {
+      height: 100%;
+      width: 3.59rem;
+      padding: .1rem .1rem;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      color: white;
+
+      .wish-card {
+        text-align: center;
+        font-size: .21rem;
+        & > .wish-card-inner {
+          width: 100%;
+          height: 100%;
+          padding-top: .45rem;
+        }
+      }
+
+      .wish-card-selected {
+        & div {
+          background-color: #ffffff !important;
+          color: #171967;
+        }
+      }
+
+      & .wish-card:nth-child(2),& .wish-card:nth-child(3), & .wish-card:nth-child(6){
+        width: 1.7rem;
+        height: 1.05rem;
+        border-radius: .1rem;
+        border: solid .03rem #ff0000;
+        background-color: #171967;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .wish-card-inner {
+          width: 98%;
+          height: 96%;
+          border-radius: .06rem;
+          border: solid 1px #00b01a;
+          background-color: #171967;
+        }
+      }
+
+      & .wish-card:nth-child(1),& .wish-card:nth-child(4), & .wish-card:nth-child(5) {
+        width: 1.14rem;
+        height: 1.05rem;
+        border-radius: .1rem;
+        border: solid .03rem #ff0000;
+        background-color: #171967;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .wish-card-inner {
+          width: 98%;
+          height: 96%;
+          border-radius: .06rem;
+          border: solid 1px #00b01a;
+          background-color: #171967;
+        }
+      }
+
+      .wish-card:nth-child(1) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/1.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+      .wish-card:nth-child(2) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/2.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+      .wish-card:nth-child(3) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/3.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+      .wish-card:nth-child(4) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/4.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+      .wish-card:nth-child(5) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/5.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+      .wish-card:nth-child(6) > .wish-card-inner {
+        background-image: url("../../common/assets/energetic/text-editor/6.png");
+        background-position: center .05rem;
+        background-repeat: no-repeat;
+        background-size: .37rem .33rem;
+      }
+
+    }
+
+    & .tool-container {
+      width: 3.59rem;
+      height: .9rem;
+
+      & .change-btn {
+        width: 3.59rem;
+        height: .3rem;
+        background: url("../../common/assets/energetic/text-editor/change.png") no-repeat center;
+        background-size: contain;
+        margin-bottom: .1rem;
+      }
+
+      & .next-step {
+        width: 3.59rem;
+        height: .49rem;
+        background: url("../../common/assets/energetic/text-editor/next-step.png") no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+}

@@ -12,45 +12,49 @@
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-
-  & .neo-header-left-element {
-    width: .69rem;
-    height: .47rem;
-    margin-left: .03rem;
-    background: url("../../common/assets/energetic/header/title-left.png") no-repeat center;
-    background-size: contain;
-  }
-
-  & .neo-header-right-element {
-    width: .69rem;
-    height: .47rem;
-    margin-right: .03rem;
-    background: url("../../common/assets/energetic/header/title-right.png") no-repeat center;
-    background-size: contain;
-  }
+  //
+  //& .neo-header-left-element {
+  //  position: absolute;
+  //  width: .69rem;
+  //  height: .47rem;
+  //  margin-left: .03rem;
+  //  background: url("../../common/assets/energetic/header/title-left.png") no-repeat center;
+  //  background-size: contain;
+  //}
+  //
+  //& .neo-header-right-element {
+  //  position: absolute;
+  //  width: .69rem;
+  //  height: .47rem;
+  //  margin-right: .03rem;
+  //  background: url("../../common/assets/energetic/header/title-right.png") no-repeat center;
+  //  background-size: contain;
+  //}
 
   & .neo-header-main-element {
     height: 100%;
-    width: 2.23rem;
+    width: 3.71rem;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
-
-    & .title {
-      margin: 0 auto .02rem;
-      width: 2.23rem;
-      height: .37rem;
-      background: url("../../common/assets/energetic/header/title.png") no-repeat center;
-      background-size: contain;
-    }
-
-    & .subtitle {
-      margin: 0 auto;
-      width: 2.21rem;
-      height: .12rem;
-      background: url("../../common/assets/energetic/header/subtitle.png") no-repeat center;
-      background-size: contain;
-    }
+    background: url("../../common/assets/energetic/header/title.png") no-repeat center;
+    background-size: contain;
+    //
+    //& .title {
+    //  margin: 0 auto .02rem;
+    //  width: 2.23rem;
+    //  height: .37rem;
+    //  background: url("../../common/assets/energetic/header/title.png") no-repeat center;
+    //  background-size: contain;
+    //}
+    //
+    //& .subtitle {
+    //  margin: 0 auto;
+    //  width: 2.21rem;
+    //  height: .12rem;
+    //  background: url("../../common/assets/energetic/header/subtitle.png") no-repeat center;
+    //  background-size: contain;
+    //}
   }
 }

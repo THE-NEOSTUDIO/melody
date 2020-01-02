@@ -38,7 +38,6 @@ class NeoRhythmCanvas extends Component {
   }
 
   resetAll() {
-    console.log(1);
     this.props.context.setContext({reset: true});
     this.setState({start: false})
   }
