@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './index.scss';
 import {row, wishes} from "../../common/constants/wishes";
+import loader from '../../common/utils/font-loader';
 
 let rowIndex = 1;
 const getWishes = () => {
@@ -47,9 +48,11 @@ export default function ({setStep}) {
                     setRow(rowIndex)
                   }}
                   className={`wish-card ${index === columnState && rowIndex === rowState ? 'wish-card-selected' : 'wish-card-unselected'}`}>
-                  <div className="wish-card-inner">
+                  <div
+                    style={{fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`}}
+                    className="wish-card-inner">
                     {
-                      wish.split('\n').map((row,i) => (<p key={`${i}row`} className="sentence">{row}</p>))
+                      wish.split('\n').map((row, i) => (<p key={`${i}row`} className="sentence">{row}</p>))
                     }
                   </div>
                 </div>

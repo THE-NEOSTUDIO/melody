@@ -24,92 +24,13 @@ const calculateIndex = (row) => {
   }
 };
 
-function neoCubePictureMaker({width = 600, height = 600, rhythmNotes = [[], [], [], [], [], [], [], []]}) {
-
-  let canvas = document.createElement('canvas');
-  canvas.id = 'neo-cube-picture-maker';
-  document.body.append(canvas);
-
-  let stage = new Konva.Stage({
-    container: 'neo-cube-picture-maker',
-    width: width,
-    height: height
-  });
-
-  let layer = new Konva.Layer();
-
-  const cubeWidth = width / 6;
-  const cubeHeight = height / 6;
-
-  const status = rhythmNotes.map(row => {
-    let line = [false, false, false, false, false, false, false, false];
-    if (row.length) {
-      row.forEach(value => line[calculateIndex(value)] = true);
-    }
-    return line;
-  });
-
-  const calculateRhythmColor = (row, column) => {
-    if (!status[row][column]) {
-      return false;
-    }
-    switch (row) {
-      case 1:
-        return LA_CUBE_COLOR;
-      case 2:
-        return SO_CUBE_COLOR;
-      case 3:
-        return MI_CUBE_COLOR;
-      case 4:
-        return RE_CUBE_COLOR;
-      case 5:
-      case 0:
-        return DO_CUBE_COLOR;
-      default:
-        return false;
-    }
-  };
-
-  const fillCubes = () => {
-    // 鼓组组件push
-    let currentXCoordinate = 0;
-    let currentYCoordinate = 0;
-    for (let row = 0; row < 6; row++) {
-      for (let column = 0; column < 6; column++) {
-        if (calculateRhythmColor(row, column)) {
-          layer.add(new Konva.Rect({
-            row,
-            fill: calculateRhythmColor(row, column),
-            column,
-            key: `${currentYCoordinate}${currentXCoordinate}rhythms`,
-            width: cubeWidth,
-            height: cubeHeight,
-            x: currentYCoordinate,
-            y: currentXCoordinate,
-          }));
-        }
-        currentXCoordinate += cubeWidth;
-      }
-      currentYCoordinate += cubeHeight;
-      currentXCoordinate = 0;
-    }
-  };
-
-  fillCubes();
-
-  stage.add(layer);
-  const dataURI = stage.toDataURL({mimeType: 'image/png'});
-  document.body.removeChild(canvas);
-  console.log(dataURI);
-  return dataURI;
-}
-
 export function cubeMaker(layer, rhythmNotes) {
-  const cubeWidth = 384 / 6;
-  const cubeHeight = 384 / 6;
+
+  const cubeWidth = 28 * 3;
+  const cubeHeight = 28 * 3;
 
   const status = rhythmNotes.map(row => {
-    let line = [false, false, false, false, false, false, false, false];
+    let line = [false, false, false, false, false, false];
     if (row.length) {
       row.forEach(value => line[calculateIndex(value)] = true);
     }
@@ -120,7 +41,7 @@ export function cubeMaker(layer, rhythmNotes) {
     if (!status[row][column]) {
       return false;
     }
-    switch (row) {
+    switch (column) {
       case 1:
         return LA_CUBE_COLOR;
       case 2:
@@ -140,30 +61,32 @@ export function cubeMaker(layer, rhythmNotes) {
 
   const fillCubes = () => {
     // 鼓组组件push
-    let currentXCoordinate = 333;
-    let currentYCoordinate = 606;
-    for (let row = 0; row < 6; row++) {
+    let currentXCoordinate = 181 * 3;
+    let currentYCoordinate = 66 * 3;
+    for (let row = 0; row < 8; row++) {
       for (let column = 0; column < 6; column++) {
         if (calculateRhythmColor(row, column)) {
-          layer.add(new Konva.Rect({
+          const cube = new Konva.Rect({
             row,
             fill: calculateRhythmColor(row, column),
             column,
             key: `${currentYCoordinate}${currentXCoordinate}rhythms`,
             width: cubeWidth,
             height: cubeHeight,
-            y: currentYCoordinate,
-            x: currentXCoordinate,
-          }));
+            y: currentXCoordinate,
+            x: currentYCoordinate,
+          })
+          cube.zIndex(1);
+          layer.add(cube);
         }
         currentXCoordinate += cubeWidth;
       }
       currentYCoordinate += cubeHeight;
-      currentXCoordinate = 333;
+      currentXCoordinate = 181 * 3;
     }
   };
 
   fillCubes();
 }
 
-export default neoCubePictureMaker;
+// export default neoCubePictureMaker;

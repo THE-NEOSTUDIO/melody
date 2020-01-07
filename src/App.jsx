@@ -13,6 +13,7 @@ import Maker from './pages/Maker/index';
 import TextEditor from './pages/TextEditor/index';
 import Share from './pages/Share/index';
 import './App.scss';
+import font from "./common/utils/font-loader";
 
 import {SOUND_MAP} from "./common/constants/type-map";
 import {GET_RHYTHM_API_LIST, GET_DRUM_API_LIST} from "./common/constants/api";
@@ -44,7 +45,10 @@ export default class App extends PureComponent {
   componentDidMount() {
     // 第一次进入必loading
     this.setLoading(true);
-    this.initAPIs().then(() => {
+    Promise.all([
+      this.initAPIs(),
+      font.load()
+    ]).then(() => {
       setTimeout(() => {
         this.setAnimation();
         setTimeout(() => {

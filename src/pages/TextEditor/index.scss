@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  padding: .08rem;
+  //padding: .08rem;
   background: #ffffff;
   display: flex;
   justify-content: center;
@@ -25,12 +25,12 @@
 
     .title-container {
 
-      width: 3.59rem;
-      height: 1.32rem;
+      width: 3.71rem;
+      height: 1.38rem;
 
       & .title {
-        width: 3.59rem;
-        height: .49rem;
+        width: 3.71rem;
+        height: .55rem;
         background: url("../../common/assets/energetic/text-editor/title.png") no-repeat center;
         background-size: 100% 100%;
       }
@@ -59,7 +59,7 @@
         .tip {
 
           height: .82rem;
-          width: 2.52rem;
+          width: 2.92rem;
           background: url("../../common/assets/energetic/text-editor/tip.png") no-repeat bottom center;
           background-size: contain;
         }
@@ -78,11 +78,11 @@
 
     & .main-container {
       height: 100%;
-      width: 3.59rem;
+      width: 3.71rem;
       padding: .1rem .1rem;
       display: flex;
       justify-content: space-around;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
       color: white;
 
@@ -186,11 +186,11 @@
     }
 
     & .tool-container {
-      width: 3.59rem;
+      width: 3.71rem;
       height: .9rem;
 
       & .change-btn {
-        width: 3.59rem;
+        width: 3.71rem;
         height: .3rem;
         background: url("../../common/assets/energetic/text-editor/change.png") no-repeat center;
         background-size: contain;
@@ -198,8 +198,8 @@
       }
 
       & .next-step {
-        width: 3.59rem;
-        height: .49rem;
+        width: 3.71rem;
+        height: .55rem;
         background: url("../../common/assets/energetic/text-editor/next-step.png") no-repeat center;
         background-size: contain;
       }

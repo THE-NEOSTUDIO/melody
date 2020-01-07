@@ -3,8 +3,9 @@ import QRCode from 'qrcode';
 
 import backgroundImage from '../../../assets/energetic/share/background.png';
 import {cubeMaker} from "../neo-cube-picture-maker";
+import {wishes} from "../../../constants/wishes";
 
-const promisifyImageGenerate = (dataURI, x, y, width, height, layer) => new Promise(resolve => {
+const promisifyImageGenerate = (dataURI, x, y, width, height, group, layer) => new Promise(resolve => {
   Konva.Image.fromURL(dataURI, function (darthNode) {
     darthNode.setAttrs({
       x,
@@ -12,13 +13,17 @@ const promisifyImageGenerate = (dataURI, x, y, width, height, layer) => new Prom
       width,
       height,
     });
-    layer.add(darthNode);
-    layer.batchDraw();
+    darthNode.zIndex(0);
+    group.add(darthNode);
     resolve(true);
   });
 });
 
 export default function neoPosterGenerator(url) {
+
+  const {row, column} = JSON.parse(window.sentence_results);
+  const [row1, row2] = wishes[row][column].split('\n');
+
   return new Promise((resolve) => {
      QRCode.toDataURL(url).then(base64Image => {
 
@@ -37,10 +42,10 @@ export default function neoPosterGenerator(url) {
          height: height * dpr
        });
 
-       console.log(width);
-
        let layer = new Konva.Layer();
        stage.add(layer);
+
+       let group = new Konva.Group();
 
        let background = new Konva.Rect({
          x: 0,
@@ -54,11 +59,83 @@ export default function neoPosterGenerator(url) {
        // add the shape to the layer
        layer.add(background);
 
-       promisifyImageGenerate(backgroundImage, strokeWidth * dpr, strokeWidth * dpr, 1014, 1518, layer).then(() => {
+       promisifyImageGenerate(backgroundImage, strokeWidth * dpr, strokeWidth * dpr, 1014, 1518, group, layer).then(() => {
+         if (row1 && row1.length === 7) {
+           let text1 = new Konva.Text({
+             x: 54 * 3,
+             y: 123 * 3,
+             text: row1,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           let text2 = new Konva.Text({
+             x: 54 * 3,
+             y: 379 * 3,
+             text: row2,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           group.add(text1);
+           group.add(text2);
+           text1.zIndex(1);
+           text2.zIndex(1);
+           layer.draw();
+         }
+
+         if (row1 && row1.length === 5) {
+           let text1 = new Konva.Text({
+             x: 90 * 3,
+             y: 123 * 3,
+             text: row1,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           let text2 = new Konva.Text({
+             x: 90 * 3,
+             y: 379 * 3,
+             text: row2,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           group.add(text1);
+           group.add(text2);
+           text1.zIndex(1);
+           text2.zIndex(1);
+           layer.draw();
+         }
+
+         if (row1 && row1.length === 4) {
+           let text1 = new Konva.Text({
+             x: 105 * 3,
+             y: 123 * 3,
+             text: row1,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           let text2 = new Konva.Text({
+             x: 105 * 3,
+             y: 379 * 3,
+             text: row2,
+             fontSize: 34 * 3,
+             fontFamily: 'neo-font',
+             fill: 'white',
+           });
+           group.add(text1);
+           group.add(text2);
+           text1.zIndex(1);
+           text2.zIndex(1);
+           layer.draw();
+         }
          cubeMaker(
-           layer, JSON.parse(decodeURIComponent(window.sound_results)).rhythmNotes
+           group, JSON.parse(decodeURIComponent(window.sound_results)).rhythmNotes
          );
-         promisifyImageGenerate(base64Image, 264.27 * dpr, 450 * dpr, 44 * dpr, 44 * dpr, layer).then(() => {
+         promisifyImageGenerate(base64Image, 264.27 * dpr, 450 * dpr, 44 * dpr, 44 * dpr, group, layer).then(() => {
+           layer.add(group);
            let final = layer.toDataURL();
            document.body.removeChild(canvas);
            resolve(final);

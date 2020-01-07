@@ -1,7 +1,7 @@
 import React from "react";
 import NeoListener from "../../common/components/audio/neo-listener";
 import {parseUrl} from "../../common/utils";
-import neoCubePictureMaker from "../../common/components/canvas/neo-cube-picture-maker";
+// import neoCubePictureMaker from "../../common/components/canvas/neo-cube-picture-maker";
 
 const queries = parseUrl().context;
 
@@ -13,7 +13,7 @@ if (queries) {
 
 export default function () {
 
-  let a = neoCubePictureMaker({width: 1200, height: 1200, rhythmNotes: JSON.parse(decodeURIComponent(queries)).rhythmNotes});
+  // let a = neoCubePictureMaker({width: 1200, height: 1200, rhythmNotes: JSON.parse(decodeURIComponent(queries)).rhythmNotes});
 
   return (
     <div
