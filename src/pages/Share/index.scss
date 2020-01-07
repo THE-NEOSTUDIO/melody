@@ -34,10 +34,28 @@
     right: 0;
     bottom: 0;
     padding: .08rem;
-    background: rgba(17, 19, 67, .8);
+    background: rgba(17, 19, 67, .9);
     display: flex;
-    justify-content: center;
+    flex-flow: column;
+    justify-content: space-around;
     align-items: center;
     z-index: 1000000;
+
+    & .follow-text {
+      border: 2px solid red;
+      color: white;
+      font-size: .24rem;
+      padding: .1rem .2rem;
+      font-family: neo-font,sans-serif;
+      background: #171967;
+      text-align: center;
+    }
+
+    & .follow-btn {
+      height: .53rem;
+      width: 2.02rem;
+      background: url("./btn.png") no-repeat center;
+      background-size: contain;
+    }
   }
 }

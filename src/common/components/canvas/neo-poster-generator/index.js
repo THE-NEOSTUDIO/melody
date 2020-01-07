@@ -2,6 +2,7 @@ import Konva from "konva";
 import QRCode from 'qrcode';
 
 import backgroundImage from '../../../assets/energetic/share/background.png';
+import play from '../../../assets/energetic/share/play.png';
 import {cubeMaker} from "../neo-cube-picture-maker";
 import {wishes} from "../../../constants/wishes";
 
@@ -22,7 +23,7 @@ const promisifyImageGenerate = (dataURI, x, y, width, height, group, layer) => n
 export default function neoPosterGenerator(url) {
 
   const {row, column} = JSON.parse(window.sentence_results);
-  const [row1, row2] = wishes[row][column].split('\n');
+  const [row1, row2] = wishes[column - 1][row].split('\n');
 
   return new Promise((resolve) => {
      QRCode.toDataURL(url).then(base64Image => {
@@ -134,11 +135,14 @@ export default function neoPosterGenerator(url) {
          cubeMaker(
            group, JSON.parse(decodeURIComponent(window.sound_results)).rhythmNotes
          );
-         promisifyImageGenerate(base64Image, 264.27 * dpr, 450 * dpr, 44 * dpr, 44 * dpr, group, layer).then(() => {
-           layer.add(group);
-           let final = layer.toDataURL();
-           document.body.removeChild(canvas);
-           resolve(final);
+         promisifyImageGenerate(base64Image, 270 * dpr, 450 * dpr, 44 * dpr, 44 * dpr, group, layer).then(() => {
+           promisifyImageGenerate(play, 148 * 3, 240 * 3, 56 * 3, 56 * 3, group, layer).then(()=>{
+             layer.add(group);
+             let final = layer.toDataURL();
+             document.body.removeChild(canvas);
+             resolve(final);
+           })
+
          });
        })
      });

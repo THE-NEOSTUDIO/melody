@@ -32,7 +32,7 @@ div {
     content: '';
     box-sizing: border-box;
     transform-origin: 0 0;
-    border: 0 solid rgba(255, 255,255, 1);
+    border: 0 solid #FFC7EC;
     left: 0;
     top: 0;
     width: 100%;
@@ -41,27 +41,27 @@ div {
 }
 
 .border-left:before {
-  border-left-width: 1px;
+  border-left-width: 4px;
 }
 
 .border-right:before {
   right: 0;
   top: 0;
-  border-right-width: 1px;
+  border-right-width: 4px;
 }
 
 .border-top:before {
   left: 0;
   top: 0;
-  border-top-width: 1px;
+  border-top-width: 4px;
 }
 
 .border-bottom:before {
-  border-bottom-width: 1px;
+  border-bottom-width: 4px;
 }
 
 .border-all:before {
-  border-width: 1px;
+  border-width: 4px;
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {

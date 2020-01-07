@@ -13,11 +13,11 @@ const useStyles = makeStyles(() => ({
 
 const PrettoSlider = withStyles({
   root: {
-    color: EMPTY_CUBE_COLOR,
+    color: '#ffffff',
     width: 100,
   },
   thumb: {
-    backgroundColor: EMPTY_CUBE_COLOR,
+    backgroundColor: '#ff0000',
     '&:focus,&:hover,&$active': {
       boxShadow: 'inherit',
     },

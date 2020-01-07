@@ -12,7 +12,7 @@
 }
 
 .teaching-animated {
-  animation: hide .4s linear;
+  animation: hide .4s linear forwards;
 }
 
 .teaching > .teaching-first-step {

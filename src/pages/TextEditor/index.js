@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './index.scss';
 import {row, wishes} from "../../common/constants/wishes";
-import loader from '../../common/utils/font-loader';
 
 let rowIndex = 1;
 const getWishes = () => {
@@ -10,6 +9,9 @@ const getWishes = () => {
   }
   return wishes[rowIndex++];
 };
+
+let rowNEXT = undefined;
+let columnNEXT = undefined;
 
 export default function ({setStep}) {
 
@@ -25,7 +27,7 @@ export default function ({setStep}) {
     if (columnState === undefined || rowState === undefined) {
       return;
     }
-    window.sentence_results = JSON.stringify({column: columnState, row: rowState});
+    window.sentence_results = JSON.stringify({column: rowNEXT, row: columnNEXT});
     setStep(3);
   };
 
@@ -44,6 +46,8 @@ export default function ({setStep}) {
                 <div
                   key={index}
                   onClick={() => {
+                    rowNEXT = rowIndex;
+                    columnNEXT = index;
                     setColumn(index);
                     setRow(rowIndex)
                   }}

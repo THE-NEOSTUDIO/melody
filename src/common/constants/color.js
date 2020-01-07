@@ -6,8 +6,8 @@
  */
 
 /* NEO RHYTHM CANVAS */
-export const BOLD_LINE_COLOR = '#fb4963';
-export const LIGHT_LINE_COLOR = 'rgba(251,73,99,0.3)';
+export const BOLD_LINE_COLOR = '#FF0000';
+export const LIGHT_LINE_COLOR = 'rgba(255,0,0,0.3)';
 export const EMPTY_CUBE_COLOR = '#171963';
 export const DO_CUBE_COLOR = '#FFC46C';
 export const RE_CUBE_COLOR = '#FFEC9B';

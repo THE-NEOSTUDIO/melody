@@ -13,43 +13,18 @@
   justify-content: space-between;
   align-items: center;
 
-  & .neo-footer-left-element {
-    width: 1.39rem;
-    height: .44rem;
-    margin-left: .03rem;
-    background: url("../../common/assets/energetic/footer/title-left.png") no-repeat center;
-    background-size: contain;
-  }
-
-  & .neo-footer-right-element {
-    width: 1.39rem;
-    height: .44rem;
-    margin-right: .03rem;
-    background: url("../../common/assets/energetic/footer/title-right.png") no-repeat center;
-    background-size: contain;
-  }
-
   & .neo-footer-main-element {
     height: 100%;
-    width: .8rem;
+    width: 100%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
 
     & .title {
-      margin: 0 auto .02rem;
-      width: .8rem;
-      height: .35rem;
+      height: 100%;
+      width: 100%;
       background: url("../../common/assets/energetic/footer/title.png") no-repeat center;
-      background-size: contain;
-    }
-
-    & .subtitle {
-      margin: 0 auto;
-      width: .69rem;
-      height: .12rem;
-      background: url("../../common/assets/energetic/footer/subtitle.png") no-repeat center;
       background-size: contain;
     }
   }
