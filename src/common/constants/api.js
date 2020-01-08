@@ -1,7 +1,7 @@
 import {SOUND_MAP} from "./type-map";
 
 /* 外网访问域名 */
-export const PREFIX_CDN = 'https://neotape.live/melody/';
+export const PREFIX_CDN = 'https://neostudio.oss-accelerate.aliyuncs.com/melody_project/';
 /* CDN访问域名 */
 export const PREFIX_NORMAL = 'https://neostudio.oss-cn-beijing.aliyuncs.com/melody_project/';
 
