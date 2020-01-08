@@ -16,6 +16,7 @@ export default function () {
 
   // TODO 容错 （没有音乐或祝福的情况下有一个默认值避免回流无声音无祝福）
   const url = `${window.location.href}?context=${encodeURIComponent(sound)}&refluence=1&wish=${encodeURIComponent(sentence)}`;
+  console.log(url);
 
   const [base64URL, setBaseURL] = useState('');
   const [follow, setFollow] = useState(false);
@@ -41,6 +42,7 @@ export default function () {
             }
           }}
           src={base64URL} width="349" height="518"/>
+          <div className="tip">长按保存图片</div>
       </div>
       {
         follow

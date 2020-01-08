@@ -58,4 +58,30 @@
       background-size: contain;
     }
   }
+
+  .tip {
+    font-family: neo-font,"PingFang SC", "Helvetica Neue", sans-serif;
+    animation: blink 3s linear infinite;
+    font-size: .15rem;
+    color: #00B01A;
+    position: absolute;
+    bottom: .04rem;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: .3rem;
+    text-align: center;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
 }

@@ -24,7 +24,9 @@ export default function ({closeTeaching}) {
                 closeTeaching();
               },400)
             }} className="teaching-second-step">
-              <div className="guide-block">{/*绘制*/}</div>
+              <div className="tip">{/*🔊*/}</div>
+              <div className="guide-block">
+              </div>
               <div className="controller-block">{/*绘制*/}</div>
             </div>
           )

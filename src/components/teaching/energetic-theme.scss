@@ -17,7 +17,7 @@
 
 .teaching > .teaching-first-step {
 
-  animation: blink 2s cubic-bezier(.4, .3, .8, .2) infinite;
+  animation: blink 3s linear infinite;
   height: 100%;
   width: 100%;
   display: flex;
@@ -69,7 +69,7 @@
 
 .teaching > .teaching-second-step {
 
-  animation: blink 2s cubic-bezier(.4, .3, .8, .2) infinite;
+  animation: blink 3s linear infinite;
   height: 100%;
   width: 100%;
   display: flex;
@@ -78,7 +78,18 @@
   align-items: center;
   writing-mode: vertical-lr;
 
+  .tip {
+    position: absolute;
+    top: .4rem;
+    left: .2rem;
+    width: 2.06rem;
+    height: .31rem;
+    background: url("../../common/assets/energetic/teaching/tttip.png") center no-repeat;
+    background-size: contain;
+  }
+
   .guide-block {
+
     width: 3.75rem;
     margin-top: 70%;
     height: 11.7%;
@@ -115,7 +126,7 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.2;
   }
   100% {
     opacity: 1;

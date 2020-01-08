@@ -1,0 +1,97 @@
+.refluence-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #171967;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: column;
+
+  .title {
+    width: 3.71rem;
+    height: .53rem;
+    background: url("../../common/assets/energetic/refluence/title.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .title-line {
+    width: 3.12rem;
+    height: .14rem;
+    background: url("../../common/assets/energetic/refluence/2020.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .canvas-container {
+    width: 3.19rem;
+    height: 3.19rem;
+    position: relative;
+
+    & .play-controller {
+      z-index: 100000;
+      width: 3.19rem;
+      height: 3.19rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .play-btn {
+        width: .72rem;
+        height: .72rem;
+        background: url("../../common/assets/energetic/refluence/play.png") no-repeat center;
+        background-size: contain;
+      }
+
+      .pause-btn {
+        width: .72rem;
+        height: .72rem;
+        background: url("../../common/assets/energetic/refluence/pause.png") no-repeat center;
+        background-size: contain;
+      }
+    }
+  }
+
+  .tip-top {
+    width: 1.76rem;
+    height: .23rem;
+    background: url("../../common/assets/energetic/refluence/wish.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .tip-under {
+    width: 1.76rem;
+    height: .23rem;
+    background: url("../../common/assets/energetic/refluence/play-tip.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .under-line {
+    width: 3.12rem;
+    height: .14rem;
+    background: url("../../common/assets/energetic/refluence/underline.png") no-repeat center;
+    background-size: contain;
+  }
+
+  .save-btn {
+    width: 3.69rem;
+    height: .54rem;
+    background: url("../../common/assets/energetic/refluence/btn.png") no-repeat center;
+    background-size: contain;
+    margin-bottom: .07rem;
+  }
+
+
+  & .canvas-container .konvajs-content, .canvas-container canvas {
+    height: 3.19rem !important;
+    width: 3.19rem !important;
+    font-family: neo-font,sans-serif;
+  }
+
+}

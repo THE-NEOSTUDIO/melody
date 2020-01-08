@@ -19,6 +19,9 @@ class NeoHeader extends Component {
     ) {
       return null;
     }
+
+    player.stop();
+
     window.sound_results = JSON.stringify({
       bpm: window.player.bpm,
       rhythmNotes: window.player.rhythmNotePad,

@@ -1,7 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import NeoListener from "../../common/components/audio/neo-listener";
 import {parseUrl} from "../../common/utils";
-// import neoCubePictureMaker from "../../common/components/canvas/neo-cube-picture-maker";
+import refluenceGenerator from "../../common/components/canvas/neo-poster-generator/refluence";
+import './index.scss'
+import font from "../../common/utils/font-loader";
 
 const queries = parseUrl().context;
 
@@ -11,19 +13,48 @@ if (queries) {
   listener = new NeoListener(JSON.parse(decodeURIComponent(queries)))
 }
 
-export default function () {
+let loaded = false;
+let status = false;
 
-  // let a = neoCubePictureMaker({width: 1200, height: 1200, rhythmNotes: JSON.parse(decodeURIComponent(queries)).rhythmNotes});
+export default function ({startPlay, setStep}) {
+
+  const [play, setPlay] = useState(false);
+
+  font.load().then(() => {
+    if (!loaded) {
+      let container = document.createElement('div');
+      refluenceGenerator(container, parseUrl())
+        .then(() => {
+          loaded = true;
+          document.querySelector(".canvas-container").append(container);
+        });
+    }
+  });
 
   return (
-    <div
-      style={{height: '100vh', width: '100vw', color: 'white', fontSize: '.5rem'}}
-      onClick={() => {
-      if (listener.ready) {
-        listener.play()
-      }
-    }}>
-      {JSON.stringify(parseUrl())}
+    <div className="refluence-container">
+      <div className="title">{/*霓虹制造局*/}</div>
+      <div className="title-line">{/*line*/}</div>
+      <div className="tip-top">{/*tip*/}</div>
+      <div className="canvas-container">
+        {/*canvas*/}
+        <div className="play-controller">
+          <div onClick={() => {
+            if (!status && listener.ready) {
+              setPlay(true);
+              status = true;
+              listener.play()
+            } else {
+              status = false;
+              setPlay(false);
+              listener.stop()
+            }
+          }} className={`${play ? 'pause' : 'play'}-btn`}>{/*play*/}</div>
+        </div>
+      </div>
+      <div className="tip-under">{/*tip*/}</div>
+      <div className="under-line">{/*line*/}</div>
+      <div onClick={() => { listener.reset();startPlay(); }} className="save-btn">{/*save*/}</div>
     </div>
   )
 }

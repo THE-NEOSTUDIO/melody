@@ -109,15 +109,9 @@ export default class App extends PureComponent {
     } else {
       switch (step) {
         case 0:
-          return <RefluenceMainPage setStep={this.setStep.bind(this)}/>;
-        case 1:
-          return <RefluencePlayer setStep={this.setStep.bind(this)}/>;
-        case 2:
-          return <Maker setLoading={this.setLoading.bind(this)} setStep={this.setStep.bind(this)}/>;
-        case 3:
-          return <TextEditor setStep={this.setStep.bind(this)}/>;
-        case 4:
-          return <Share setStep={this.setStep.bind(this)}/>
+          return <RefluenceMainPage
+            startPlay={this.setState.bind(this, {refluence: null})}
+            setStep={this.setStep.bind(this)}/>;
       }
     }
   }
