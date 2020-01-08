@@ -22,10 +22,19 @@ export default function ({startPlay, setStep}) {
 
   font.load().then(() => {
     if (!loaded) {
+      loaded = true;
       let container = document.createElement('div');
       refluenceGenerator(container, parseUrl())
         .then(() => {
-          loaded = true;
+          document.querySelector(".canvas-container").append(container);
+        });
+    }
+  }).catch(() => {
+    if (!loaded) {
+      loaded = true;
+      let container = document.createElement('div');
+      refluenceGenerator(container, parseUrl())
+        .then(() => {
           document.querySelector(".canvas-container").append(container);
         });
     }
@@ -54,7 +63,10 @@ export default function ({startPlay, setStep}) {
       </div>
       <div className="tip-under">{/*tip*/}</div>
       <div className="under-line">{/*line*/}</div>
-      <div onClick={() => { listener.reset();startPlay(); }} className="save-btn">{/*save*/}</div>
+      <div onClick={() => {
+        listener.reset();
+        startPlay();
+      }} className="save-btn">{/*save*/}</div>
     </div>
   )
 }

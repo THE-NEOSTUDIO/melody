@@ -67,7 +67,7 @@ export default function neoPosterGenerator(url) {
              y: 123 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
@@ -75,7 +75,7 @@ export default function neoPosterGenerator(url) {
              y: 379 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            group.add(text1);
@@ -91,7 +91,7 @@ export default function neoPosterGenerator(url) {
              y: 123 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
@@ -99,7 +99,7 @@ export default function neoPosterGenerator(url) {
              y: 379 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            group.add(text1);
@@ -115,7 +115,7 @@ export default function neoPosterGenerator(url) {
              y: 123 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
@@ -123,7 +123,7 @@ export default function neoPosterGenerator(url) {
              y: 379 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: 'neo-font',
+             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
              fill: 'white',
            });
            group.add(text1);

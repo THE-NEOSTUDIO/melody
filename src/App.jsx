@@ -47,7 +47,7 @@ export default class App extends PureComponent {
     this.setLoading(true);
     Promise.all([
       this.initAPIs(),
-      font.load()
+      font.load(null, 5000)
     ]).then(() => {
       setTimeout(() => {
         this.setAnimation();
