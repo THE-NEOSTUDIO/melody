@@ -1,3 +1,7 @@
+.sentence {
+  font-family: neo, '楷体', 'Kaiti', "Noto Sans Kaithi", "PingFang HK", "PingFang SC", sans-serif!important;
+}
+
 .text-editor {
   position: absolute;
   overflow: hidden;
@@ -59,7 +63,7 @@
         .tip {
 
           height: .82rem;
-          width: 2.92rem;
+          width: 2.72rem;
           background: url("../../common/assets/energetic/text-editor/tip.png") no-repeat bottom center;
           background-size: contain;
         }
@@ -119,6 +123,7 @@
           border-radius: .06rem;
           border: solid 1px #00b01a;
           background-color: #171967;
+          font-family: neo;
         }
       }
 

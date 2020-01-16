@@ -21,12 +21,12 @@ export default function ({setStep}) {
         <div className="sub-dot">{/*音乐卡片*/}</div>
         <div className="separate-line">{/*line*/}</div>
         <div className="slogan">{/*slogan*/}</div>
-        <div onClick={() => go()} className="pad">
+        <div onTouchStart={() => go()} className="pad">
           <div className="left-animation">{/*spinning*/}</div>
           <div className="right-element">{/*spinning*/}</div>
         </div>
         <div className="separate-line">{/*line*/}</div>
-        <div onClick={() => go()} className="start">{/*开始*/}</div>
+        <div onTouchStart={() => go()} className="start">{/*开始*/}</div>
         <div className="footer-chinese">{/*霓虹制造局*/}</div>
         <div className="footer-english">{/*neo studio*/}</div>
       </div>

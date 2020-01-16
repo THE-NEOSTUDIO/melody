@@ -126,7 +126,7 @@ export function refluenceCubeMaker(layer, rhythmNotes) {
 
   const fillCubes = () => {
     // 鼓组组件push
-    let currentXCoordinate = 75 * 3;
+    let currentXCoordinate = 80 * 3;
     let currentYCoordinate = 50 * 3;
     for (let row = 0; row < 8; row++) {
       for (let column = 0; column < 6; column++) {

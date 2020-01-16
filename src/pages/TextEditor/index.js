@@ -45,7 +45,7 @@ export default function ({setStep}) {
             hookWishes.map((wish, index) => (
                 <div
                   key={index}
-                  onClick={() => {
+                  onTouchStart={() => {
                     rowNEXT = rowIndex;
                     columnNEXT = index;
                     setColumn(index);
@@ -53,7 +53,6 @@ export default function ({setStep}) {
                   }}
                   className={`wish-card ${index === columnState && rowIndex === rowState ? 'wish-card-selected' : 'wish-card-unselected'}`}>
                   <div
-                    style={{fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`}}
                     className="wish-card-inner">
                     {
                       wish.split('\n').map((row, i) => (<p key={`${i}row`} className="sentence">{row}</p>))
@@ -65,8 +64,8 @@ export default function ({setStep}) {
           }
         </div>
         <div className="tool-container">
-          <div onClick={() => setWishes(getWishes())} className="change-btn">{/*换一换*/}</div>
-          <div onClick={() => go()} className="next-step">{/*保存*/}</div>
+          <div onTouchStart={() => setWishes(getWishes())} className="change-btn">{/*换一换*/}</div>
+          <div onTouchStart={() => go()} className="next-step">{/*保存*/}</div>
         </div>
       </div>
     </div>

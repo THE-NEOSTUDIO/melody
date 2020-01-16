@@ -63,19 +63,19 @@ export default function neoPosterGenerator(url) {
        promisifyImageGenerate(backgroundImage, strokeWidth * dpr, strokeWidth * dpr, 1014, 1518, group, layer).then(() => {
          if (row1 && row1.length === 7) {
            let text1 = new Konva.Text({
-             x: 54 * 3,
-             y: 123 * 3,
+             x: 37 * 3 + 9 * 6.5,
+             y: 120 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
-             x: 54 * 3,
-             y: 379 * 3,
+             x: 37 * 3 + 9 * 6.5,
+             y: 376 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            group.add(text1);
@@ -87,19 +87,19 @@ export default function neoPosterGenerator(url) {
 
          if (row1 && row1.length === 5) {
            let text1 = new Konva.Text({
-             x: 90 * 3,
-             y: 123 * 3,
+             x: 76 * 3 + 5 * 6.5,
+             y: 120 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
-             x: 90 * 3,
-             y: 379 * 3,
+             x: 76 * 3 + 5 * 6.5,
+             y: 376 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            group.add(text1);
@@ -111,19 +111,19 @@ export default function neoPosterGenerator(url) {
 
          if (row1 && row1.length === 4) {
            let text1 = new Konva.Text({
-             x: 105 * 3,
-             y: 123 * 3,
+             x: 96 * 3 + 4 * 6,
+             y: 120 * 3,
              text: row1,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            let text2 = new Konva.Text({
-             x: 105 * 3,
-             y: 379 * 3,
+             x: 96 * 3 + 4 * 6,
+             y: 376 * 3,
              text: row2,
              fontSize: 34 * 3,
-             fontFamily: `"neo-font", "PingFang SC", "PingFangSC", "Microsoft YaHei", "微软雅黑", Arial, sans-serif`,
+             fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
              fill: 'white',
            });
            group.add(text1);

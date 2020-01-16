@@ -11,12 +11,12 @@ let loaded = false;
 
 export default function () {
 
-  const sentence = window.sentence_results;
-  const sound = window.sound_results;
+  // const sentence = window.sentence_results;
+  // const sound = window.sound_results;
 
   // TODO 容错 （没有音乐或祝福的情况下有一个默认值避免回流无声音无祝福）
-  const url = `${window.location.href}?context=${encodeURIComponent(sound)}&refluence=1&wish=${encodeURIComponent(sentence)}`;
-  console.log(url);
+  let url = `https://neotape.live/melody/?context=${encodeURIComponent(window.sound_results)}&refluence=1&wish=${encodeURIComponent(window.sentence_results)}`;
+  // let url = `http://localhost:3000/?context=${encodeURIComponent(window.sound_results)}&refluence=1&wish=${encodeURIComponent(window.sentence_results)}`;
 
   const [base64URL, setBaseURL] = useState('');
   const [follow, setFollow] = useState(false);
@@ -38,11 +38,13 @@ export default function () {
           onTouchEnd={() => {
             endTime = (new Date()).valueOf();
             if (endTime - startTime > 600) {
-              setFollow(true)
+              setTimeout(() => {
+                setFollow(true)
+              }, 1500)
             }
           }}
           src={base64URL} width="349" height="518"/>
-          <div className="tip">长按保存图片</div>
+        <div className="tip">长按保存图片</div>
       </div>
       {
         follow
@@ -55,7 +57,7 @@ export default function () {
                      height: '2.88rem'
                    }}
               />
-              <div onClick={() => {
+              <div onTouchStart={() => {
                 setFollow(false);
               }} className="follow-btn">{/*关注完成*/}</div>
             </div>

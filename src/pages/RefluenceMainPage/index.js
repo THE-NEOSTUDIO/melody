@@ -3,7 +3,6 @@ import NeoListener from "../../common/components/audio/neo-listener";
 import {parseUrl} from "../../common/utils";
 import refluenceGenerator from "../../common/components/canvas/neo-poster-generator/refluence";
 import './index.scss'
-import font from "../../common/utils/font-loader";
 
 const queries = parseUrl().context;
 
@@ -20,25 +19,15 @@ export default function ({startPlay, setStep}) {
 
   const [play, setPlay] = useState(false);
 
-  font.load().then(() => {
-    if (!loaded) {
-      loaded = true;
-      let container = document.createElement('div');
-      refluenceGenerator(container, parseUrl())
-        .then(() => {
-          document.querySelector(".canvas-container").append(container);
-        });
-    }
-  }).catch(() => {
-    if (!loaded) {
-      loaded = true;
-      let container = document.createElement('div');
-      refluenceGenerator(container, parseUrl())
-        .then(() => {
-          document.querySelector(".canvas-container").append(container);
-        });
-    }
-  });
+  if (!loaded) {
+    loaded = true;
+    let container = document.createElement('div');
+    refluenceGenerator(container, parseUrl())
+      .then(() => {
+        document.querySelector(".canvas-container").append(container);
+      });
+  }
+
 
   return (
     <div className="refluence-container">
@@ -48,7 +37,7 @@ export default function ({startPlay, setStep}) {
       <div className="canvas-container">
         {/*canvas*/}
         <div className="play-controller">
-          <div onClick={() => {
+          <div onTouchStart={() => {
             if (!status && listener.ready) {
               setPlay(true);
               status = true;
@@ -63,7 +52,7 @@ export default function ({startPlay, setStep}) {
       </div>
       <div className="tip-under">{/*tip*/}</div>
       <div className="under-line">{/*line*/}</div>
-      <div onClick={() => {
+      <div onTouchStart={() => {
         listener.reset();
         startPlay();
       }} className="save-btn">{/*save*/}</div>

@@ -8,16 +8,16 @@ import React, {PureComponent} from 'react';
 import {parseUrl} from "./common/utils";
 import MainPage from './pages/MainPage/index';
 import RefluenceMainPage from './pages/RefluenceMainPage/index';
-import RefluencePlayer from './pages/RefluencePlayer/index';
 import Maker from './pages/Maker/index';
 import TextEditor from './pages/TextEditor/index';
 import Share from './pages/Share/index';
 import './App.scss';
-import font from "./common/utils/font-loader";
 
 import {SOUND_MAP} from "./common/constants/type-map";
 import {GET_RHYTHM_API_LIST, GET_DRUM_API_LIST} from "./common/constants/api";
 import neoFetch from 'axios';
+
+import font from "./common/utils/font-loader";
 
 const queries = parseUrl();
 
@@ -47,7 +47,7 @@ export default class App extends PureComponent {
     this.setLoading(true);
     Promise.all([
       this.initAPIs(),
-      font.load(null, 5000)
+      font.load(null, 3000)
     ]).then(() => {
       setTimeout(() => {
         this.setAnimation();

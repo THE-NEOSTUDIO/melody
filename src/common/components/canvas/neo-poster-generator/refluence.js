@@ -3,6 +3,7 @@ import Konva from "konva";
 import backgroundImage from '../../../assets/energetic/share/refluence.png';
 import {refluenceCubeMaker} from "../neo-cube-picture-maker";
 import {wishes} from "../../../constants/wishes";
+import font from "../../../utils/font-loader";
 
 const promisifyImageGenerate = (dataURI, x, y, width, height, group) => new Promise(resolve => {
   Konva.Image.fromURL(dataURI, function (darthNode) {
@@ -52,84 +53,86 @@ export default function refluenceGenerator(div, queries) {
     // add the shape to the layer
     layer.add(background);
 
-    promisifyImageGenerate(backgroundImage, 0, 0, 319 * 3, 319 * 3, group, layer).then(() => {
-      if (row1 && row1.length === 7) {
-        let text1 = new Konva.Text({
-          x: 40 * 3,
-          y: 6 * 3,
-          text: row1,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        let text2 = new Konva.Text({
-          x: 40 * 3,
-          y: 280 * 3,
-          text: row2,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        group.add(text1);
-        group.add(text2);
-        text1.zIndex(1);
-        text2.zIndex(1);
-        layer.draw();
-      }
+    font.load(null, 2000).then(()=>{
+      promisifyImageGenerate(backgroundImage, 0, 0, 319 * 3, 319 * 3, group, layer).then(() => {
+        if (row1 && row1.length === 7) {
+          let text1 = new Konva.Text({
+            x: 21 * 3 + 9 * 6.5,
+            y: 3 * 3,
+            text: row1,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          let text2 = new Konva.Text({
+            x: 21 * 3 + 9 * 6.5,
+            y: 277 * 3,
+            text: row2,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          group.add(text1);
+          group.add(text2);
+          text1.zIndex(1);
+          text2.zIndex(1);
+          layer.draw();
+        }
 
-      if (row1 && row1.length === 5) {
-        let text1 = new Konva.Text({
-          x: 74 * 3,
-          y: 6 * 3,
-          text: row1,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        let text2 = new Konva.Text({
-          x: 74 * 3,
-          y: 280 * 3,
-          text: row2,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        group.add(text1);
-        group.add(text2);
-        text1.zIndex(1);
-        text2.zIndex(1);
-        layer.draw();
-      }
+        if (row1 && row1.length === 5) {
+          let text1 = new Konva.Text({
+            x: 58 * 3 + 7 * 6.5,
+            y: 3 * 3,
+            text: row1,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          let text2 = new Konva.Text({
+            x: 58 * 3 + 7 * 6.5,
+            y: 277 * 3,
+            text: row2,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          group.add(text1);
+          group.add(text2);
+          text1.zIndex(1);
+          text2.zIndex(1);
+          layer.draw();
+        }
 
-      if (row1 && row1.length === 4) {
-        let text1 = new Konva.Text({
-          x: 90 * 3,
-          y: 6 * 3,
-          text: row1,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        let text2 = new Konva.Text({
-          x: 90 * 3,
-          y: 280 * 3,
-          text: row2,
-          fontSize: 34 * 3,
-          fontFamily: 'neo-font',
-          fill: 'white',
-        });
-        group.add(text1);
-        group.add(text2);
-        text1.zIndex(1);
-        text2.zIndex(1);
+        if (row1 && row1.length === 4) {
+          let text1 = new Konva.Text({
+            x: 76 * 3 + 6 * 6,
+            y: 3 * 3,
+            text: row1,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          let text2 = new Konva.Text({
+            x: 76 * 3 + 6 * 6,
+            y: 277 * 3,
+            text: row2,
+            fontSize: 34 * 3,
+            fontFamily: `neo, "楷体", "STKaiti", "PingFangSC", "PingFangSC", "Microsoft YaHei", "KaiTi", "sans-serif"`,
+            fill: 'white',
+          });
+          group.add(text1);
+          group.add(text2);
+          text1.zIndex(1);
+          text2.zIndex(1);
+          layer.draw();
+        }
+        refluenceCubeMaker(
+          group, rhythm
+        );
+        layer.add(group);
         layer.draw();
-      }
-      refluenceCubeMaker(
-        group, rhythm
-      );
-      layer.add(group);
-      layer.draw();
-      resolve(true);
-    });
+        resolve(true);
+      });
+    })
   })
 }
